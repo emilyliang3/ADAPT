@@ -1,26 +1,40 @@
 import { useState } from 'react';
-export default function MyForm() {
+
+function MyForm({question,changeValue}) {
   const [name, setName] = useState("");
-  const [displayName,setDisplayName] = useState("");
 
   function handleSubmit(event){
     event.preventDefault();
-    setDisplayName(name);
+    changeValue(name);
+    setName("");
   }
 
   return (
-    <>
-      <h1>{displayName}</h1>
-      <form onSubmit={handleSubmit}>
-        <label>Enter your name:
-          <input 
-            type="text" 
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-          />
-        </label>
-        <input type="submit" />
-      </form>
-    </>
+    <form onSubmit={handleSubmit}>
+      <label>{question} 
+        <input 
+          type="text" 
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+        />
+      </label>
+      <input type="submit" />
+    </form>
   );
+}
+
+export default function App(){
+  const [userName,setUserName] = useState("");
+  const [password,setPassword] = useState("");
+  return (
+  <>
+    <h1> ADAPT (Aiding Dietician and Personal Trainer)</h1>
+    <MyForm question = "Username: " changeValue = {setUserName}/>
+    <MyForm question = "Password: " changeValue = {setPassword}/>
+    <h3>Your username is {userName}</h3>
+    <h3>Your password is {password}</h3>
+  </>
+  );
+
+
 }
