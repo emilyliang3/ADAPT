@@ -1,52 +1,34 @@
-import { useState } from 'react';
-function handleClick(){
+import { useEffect, useState } from 'react';
+import './App.css';
+import { Auth } from './auth';
+import {db} from './firebase'
+import { getDocs, collection } from 'firebase/firestore' 
 
-}
+function App() {
+  const [movieList, setMovieList]  = useState([])
+  const moviesCollectionRef = collection(db, "movies")
 
-function MyForm({question,changeValue}) {
-  const [name, setName] = useState("");
+  useEffect(() => {
+    const getMovieList = async () => {
+      //Read the data
+      //set the movie list
+      try {
+        const data = await getDocs(moviesCollectionRef);
+      } catch (err) {
+        console.error(err);
+      }
+  };
+    getMovieList();
+  }, [])
 
-  function handleSubmit(event){
-    event.preventDefault();
-    changeValue(name);
-    setName("");
-  }
-
+  
   return (
-    <form onSubmit={handleSubmit}>
-      <label>{question} 
-        <input 
-          type="text" 
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-        />
-      </label>
-      <input type="submit" />
-    </form>
+    <div className="App">
+    <Auth /> 
+    
+    <button></button>
+    </div>
   );
 }
 
-export default function App(){
-  const [userName,setUserName] = useState("");
-  const [password,setPassword] = useState("");
-  const [weight,setWeight] = useState("");
-  return (
-  <>
-    <h1> ADAPT (Aiding Dietician and Personal Trainer)</h1>
-    <h2>Google Signin:</h2>
-    <button onClick = {handleClick}>Sign in with Google</button>
-
-    <h2>Manual Signin:</h2>
-    <MyForm question = "Username: " changeValue = {setUserName}/>
-    <MyForm question = "Password: " changeValue = {setPassword}/>
-    <h3>Your username is {userName}</h3>
-    <h3>Your password is {password}</h3>
-    <h2>Your Information:</h2>
-    <MyForm question = "Weight: " changeValue = {setWeight}/>
-
-    <h3>Your weight is {weight}</h3>
-
-  </>
-  );
-
-}
+export default App;
