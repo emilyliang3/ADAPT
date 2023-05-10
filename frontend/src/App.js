@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { signUpWithEmail } from './firebaseFunctions';
 
 function MyForm({question,changeValue}) {
   const [name, setName] = useState("");
@@ -33,6 +34,7 @@ export default function App(){
     <MyForm question = "Password: " changeValue = {setPassword}/>
     <h3>Your username is {userName}</h3>
     <h3>Your password is {password}</h3>
+    <button onClick={() => signUpWithEmail(userName, password)}> Sign Up </button>
   </>
   );
 
