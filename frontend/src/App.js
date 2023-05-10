@@ -1,6 +1,6 @@
-import {auth, googleProvider} from "./firebase";
-import { createUserWithEmailAndPassword, signInWithPopup, signOut } from "firebase/auth";
 import { useState } from "react";
+import { signUpWithEmail, signInWithGoogle, auth } from './firebaseFunctions';
+import { signOut } from "firebase/auth";
 
 function MyForm({question,changeValue}) {
   const [name, setName] = useState("");
@@ -29,21 +29,6 @@ export default function App(){
     const [email, setemail] = useState("");
     const [password, setPassword] = useState("");
     const [weight,setWeight] = useState("");
-    const signIn = async () => {
-        try {
-            await createUserWithEmailAndPassword(auth, email, password);
-          } catch (err) {
-            console.error(err);
-          }
-    };
-
-    const signInWithGoogle = async () => {
-        try {
-            await signInWithPopup(auth, googleProvider);
-          } catch (err) {
-            console.error(err);
-          }
-    };
 
     const logout = async () => {
         try {
@@ -67,11 +52,11 @@ export default function App(){
       onChange = {(e) => setPassword(e.target.value)}
       />
       
-      <h2>Manual Signin:</h2>
-      <button onClick={signIn}> Sign In</button>
+      <h2>Manual Signup:</h2>
+      <button onClick={() => signUpWithEmail(email, password)}> Sign Up</button>
 
       <h2>Google Signin:</h2>
-      <button onClick={signInWithGoogle}> Sign In With Google</button>
+      <button onClick={() => signInWithGoogle()}> Sign In With Google</button>
       <button onClick={logout}> Logout </button>
 
       <h2>Your Information:</h2>
