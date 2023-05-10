@@ -31,7 +31,7 @@ export const Auth = () => {
     const [weight,setWeight] = useState("");
 
     
-
+    // Manual signIn password at leat has to have 7 digits.
     const signIn = async () => {
         try {
             await createUserWithEmailAndPassword(auth, email, password);
@@ -40,6 +40,7 @@ export const Auth = () => {
           }
     };
 
+    // function for Google account sign in
     const signInWithGoogle = async () => {
         try {
             await signInWithPopup(auth, googleProvider);
@@ -47,7 +48,7 @@ export const Auth = () => {
             console.error(err);
           }
     };
-
+    // function for logout
     const logout = async () => {
         try {
             await signOut(auth);
@@ -61,7 +62,7 @@ return (
 
         <h1> ADAPT (Aiding Dietician and Personal Trainer)</h1>
         
-      
+        
         <input 
         placeholder="Email..."
         onChange = {(e) => setemail(e.target.value)}
