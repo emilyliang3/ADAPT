@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { signUpWithEmail, signInWithGoogle } from './firebaseFunctions';
+import { signUpWithEmail, signInWithGoogle, auth } from './firebaseFunctions';
 import { signOut } from "firebase/auth";
 
 function MyForm({question,changeValue}) {
@@ -53,10 +53,10 @@ export default function App(){
       />
       
       <h2>Manual Signup:</h2>
-      <button onClick={signUpWithEmail}> Sign Up</button>
+      <button onClick={() => signUpWithEmail(email, password)}> Sign Up</button>
 
       <h2>Google Signin:</h2>
-      <button onClick={signInWithGoogle}> Sign In With Google</button>
+      <button onClick={() => signInWithGoogle()}> Sign In With Google</button>
       <button onClick={logout}> Logout </button>
 
       <h2>Your Information:</h2>
