@@ -35,6 +35,7 @@ export default function App(){
     <h1> ADAPT (Aiding Dietician and Personal Trainer)</h1>
     <h2>Google Signin:</h2>
     <button onClick = {handleClick}>Sign in with Google</button>
+
     <h2>Manual Signin:</h2>
     <MyForm question = "Username: " changeValue = {setUserName}/>
     <MyForm question = "Password: " changeValue = {setPassword}/>
