@@ -1,5 +1,6 @@
-import { useState } from 'react';
+import { useState } from "react";
 import { signUpWithEmail, signInWithGoogle } from './firebaseFunctions';
+import { signOut } from "firebase/auth";
 
 function MyForm({question,changeValue}) {
   const [name, setName] = useState("");
@@ -25,19 +26,41 @@ function MyForm({question,changeValue}) {
 }
 
 export default function App(){
-  const [userName,setUserName] = useState("");
-  const [password,setPassword] = useState("");
-  return (
-  <>
-    <h1> ADAPT (Aiding Dietician and Personal Trainer)</h1>
-    <MyForm question = "Username: " changeValue = {setUserName}/>
-    <MyForm question = "Password: " changeValue = {setPassword}/>
-    <h3>Your username is {userName}</h3>
-    <h3>Your password is {password}</h3>
-    <button onClick={() => signUpWithEmail(userName, password)}> Sign Up </button>
-    <button onClick={() => signInWithGoogle()}> Sign In With Google </button>
-  </>
-  );
+    const [email, setemail] = useState("");
+    const [password, setPassword] = useState("");
+    const [weight,setWeight] = useState("");
 
+    const logout = async () => {
+        try {
+            await signOut(auth);
+          } catch (err) {
+            console.error(err);
+          }
+    };
 
-}
+    return (
+    <div>
+      <h1> ADAPT (Aiding Dietician and Personal Trainer)</h1>     
+      <input 
+      placeholder="Email..."
+      onChange = {(e) => setemail(e.target.value)}
+      />
+      
+      <input 
+      placeholder="Password..."
+      type = "password"
+      onChange = {(e) => setPassword(e.target.value)}
+      />
+      
+      <h2>Manual Signup:</h2>
+      <button onClick={signUpWithEmail}> Sign Up</button>
+
+      <h2>Google Signin:</h2>
+      <button onClick={signInWithGoogle}> Sign In With Google</button>
+      <button onClick={logout}> Logout </button>
+
+      <h2>Your Information:</h2>
+      <MyForm question = "Weight: " changeValue = {setWeight}/>
+    </div>
+    );
+};
