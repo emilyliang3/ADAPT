@@ -12,7 +12,6 @@ function MyForm({question,changeValue}) {
     setName("");
   }
 
-  //hi
 
   return (
     <form onSubmit={handleSubmit}>
@@ -32,6 +31,18 @@ export default function App(){
   const [userName,setUserName] = useState("");
   const [password,setPassword] = useState("");
   const [weight,setWeight] = useState("");
+  function validateWeight(input) {
+    return !isNaN(input) && parseInt(input) > 0;
+  }
+  
+  function handleWeightSubmit(event) {
+    event.preventDefault();
+    let input = event.target.elements.weightInput.value;
+    while (!validateWeight(input)) {
+      input = prompt("Please enter a valid weight.");
+    }
+    setWeight(input);
+  }
   return (
   <>
     <h1> ADAPT (Aiding Dietician and Personal Trainer)</h1>
@@ -44,11 +55,17 @@ export default function App(){
     <h3>Your username is {userName}</h3>
     <h3>Your password is {password}</h3>
     <h2>Your Information:</h2>
-    <MyForm question = "Weight: " changeValue = {setWeight}/>
-
-    <h3>Your weight is {weight}</h3>
-
-  </>
+    <form onSubmit={handleWeightSubmit}>
+        <label>Weight:
+          <input
+            type="text"
+            name="weightInput"
+            defaultValue={weight}
+          />
+        </label>
+        <input type="submit" />
+      </form>
+      <h3>Your weight is {weight}</h3>
+    </>
   );
-
 }
