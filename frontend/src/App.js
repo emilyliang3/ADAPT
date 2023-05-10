@@ -12,6 +12,8 @@ function MyForm({question,changeValue}) {
     setName("");
   }
 
+  //hi
+
   return (
     <form onSubmit={handleSubmit}>
       <label>{question} 
