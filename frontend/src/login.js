@@ -1,7 +1,12 @@
 import { signUpWithEmail, signInWithGoogle, auth } from './firebaseFunctions';
 import { signOut } from "firebase/auth";
-import MyForm from './question-textbox'
 import { useState } from "react";
+import { BrowserRouter, Route, Link } from "react-router-dom";
+
+function signedIn(){
+  //for backend ppl to modify (return true if signed in, false if not)
+  return true;
+}
 
 export default function LoginButtons(){
     const [email, setemail] = useState("");
@@ -15,6 +20,12 @@ export default function LoginButtons(){
           }
     };
 
+    function SignInDisplay(){
+      if (signedIn()){
+        return <h3>You are signed in! Please navigate to home, workout, or food.</h3>;
+      }
+      return <h3>You are not signed in! Please sign in before navigating to other pages.</h3>;
+    }
     return (
     <div>
       <h1> ADAPT (Aiding Dietician and Personal Trainer)</h1>     
@@ -33,8 +44,10 @@ export default function LoginButtons(){
       <button onClick={() => signUpWithEmail(email, password)}> Sign Up</button>
 
       <h2>Google Signin:</h2>
-      <button onClick={() => signInWithGoogle()}> Sign In With Google</button>
+      <button onClick={() => signInWithGoogle()}> Sign In with Google</button>
       <button onClick={logout}> Logout </button>
+      
+      <SignInDisplay />
     </div>
     );
 };
