@@ -1,7 +1,14 @@
+import MyForm from '../question-textbox'
+import { useState } from "react";
+
 function Home() {
+    const [weight,setWeight] = useState("");
     return (
-        <h1>this is the home</h1>
+        <>
+            <h2>Your Information:</h2>
+            <MyForm question = "Weight: " changeValue = {setWeight}/>
+            <h4>Your weight is {weight}</h4>
+        </>
     );
 }
-
 export default Home;

@@ -1,34 +1,11 @@
-import { useState } from "react";
 import { signUpWithEmail, signInWithGoogle, auth } from './firebaseFunctions';
 import { signOut } from "firebase/auth";
-
-function MyForm({question,changeValue}) {
-  const [name, setName] = useState("");
-
-  function handleSubmit(event){
-    event.preventDefault();
-    changeValue(name);
-    setName("");
-  }
-
-  return (
-    <form onSubmit={handleSubmit}>
-      <label>{question} 
-        <input 
-          type="text" 
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-        />
-      </label>
-      <input type="submit" />
-    </form>
-  );
-}
+import MyForm from './question-textbox'
+import { useState } from "react";
 
 export default function LoginButtons(){
     const [email, setemail] = useState("");
     const [password, setPassword] = useState("");
-    const [weight,setWeight] = useState("");
 
     const logout = async () => {
         try {
@@ -58,9 +35,6 @@ export default function LoginButtons(){
       <h2>Google Signin:</h2>
       <button onClick={() => signInWithGoogle()}> Sign In With Google</button>
       <button onClick={logout}> Logout </button>
-
-      <h2>Your Information:</h2>
-      <MyForm question = "Weight: " changeValue = {setWeight}/>
     </div>
     );
 };
