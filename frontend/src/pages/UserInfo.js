@@ -1,7 +1,7 @@
 import MyForm from '../question-textbox'
 import { useState } from "react";
 
-function Home() {
+function UserInfo() {
     const [weight,setWeight] = useState("");
     return (
         <>
@@ -11,4 +11,4 @@ function Home() {
         </>
     );
 }
-export default Home;
+export default UserInfo;
