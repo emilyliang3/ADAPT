@@ -25,7 +25,7 @@ function MyForm({question,changeValue}) {
   );
 }
 
-export default function App(){
+export default function LoginButtons(){
     const [email, setemail] = useState("");
     const [password, setPassword] = useState("");
     const [weight,setWeight] = useState("");
