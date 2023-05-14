@@ -1,7 +1,7 @@
 import ReactDOM from "react-dom";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Layout from "./pages/Layout";
-import Home from "./pages/Home";
+import UserInfo from "./pages/UserInfo";
 import Food from "./pages/Food";
 import Workout from "./pages/Workout";
 import Login from "./pages/Login";
@@ -12,8 +12,8 @@ export default function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Layout />}>
-          <Route index element={<Home />} />
-          <Route path="login" element={<Login />} />
+          <Route index element={<Login />} />
+          <Route path="user-info" element={<UserInfo />} />
           <Route path="food" element={<Food />} />
           <Route path="workout" element={<Workout />} />
           <Route path="*" element={<NoPage />} />

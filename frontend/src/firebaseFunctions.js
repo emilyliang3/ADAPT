@@ -8,6 +8,12 @@ export const db = getFirestore(app);
 export const auth = getAuth(app);
 export const googleProvider = new GoogleAuthProvider();
 
+
+
+function signedIn(){
+    //modify to return true when signed in and false when not
+    return true
+}
 const signUpWithEmail = (email, password) => {
     createUserWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
@@ -25,6 +31,9 @@ const signInWithGoogle = () => {
             email: userCredential.user.email
         }, { merge: true });
     })
+
 };
+
+
 
 export { signUpWithEmail, signInWithGoogle };
