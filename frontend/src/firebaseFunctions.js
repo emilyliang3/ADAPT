@@ -1,19 +1,18 @@
 import { firebaseConfig } from './config.js'
 import { initializeApp } from 'firebase/app';
 import { getFirestore, doc, setDoc } from 'firebase/firestore';
-import { getAuth, createUserWithEmailAndPassword, signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
+import { getAuth, createUserWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, onAuthStateChanged } from 'firebase/auth';
 
 const app = initializeApp(firebaseConfig);
 export const db = getFirestore(app);
 export const auth = getAuth(app);
 export const googleProvider = new GoogleAuthProvider();
 
-
-
-function signedIn(){
-    //modify to return true when signed in and false when not
-    return true
+//returns user object of current user, returns null if no user signed in
+const getUser = () => {
+    return auth.currentUser;
 }
+
 const signUpWithEmail = (email, password) => {
     createUserWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
@@ -34,6 +33,4 @@ const signInWithGoogle = () => {
 
 };
 
-
-
-export { signUpWithEmail, signInWithGoogle };
+export { signUpWithEmail, signInWithGoogle, getUser };
