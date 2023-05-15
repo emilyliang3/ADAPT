@@ -1,12 +1,7 @@
-import { signUpWithEmail, signInWithGoogle, auth } from './firebaseFunctions';
+import { signUpWithEmail, signInWithGoogle, auth, getUser } from './firebaseFunctions';
 import { signOut } from "firebase/auth";
 import { useState } from "react";
-import { BrowserRouter, Route, Link } from "react-router-dom";
-
-function signedIn(){
-  //for backend ppl to modify (return true if signed in, false if not)
-  return true;
-}
+//import { BrowserRouter, Route, Link } from "react-router-dom";
 
 export default function LoginButtons(){
     const [email, setemail] = useState("");
@@ -20,12 +15,14 @@ export default function LoginButtons(){
           }
     };
 
+    // TODO: re render page when sign in state changes
     function SignInDisplay(){
-      if (signedIn()){
+      if (getUser()){
         return <h3>You are signed in! Please navigate to home, workout, or food.</h3>;
       }
       return <h3>You are not signed in! Please sign in before navigating to other pages.</h3>;
     }
+
     return (
     <div>
       <h1> ADAPT (Aiding Dietician and Personal Trainer)</h1>     
