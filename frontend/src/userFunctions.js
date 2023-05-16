@@ -1,4 +1,4 @@
-import { doc, setDoc } from 'firebase/firestore';
+import { doc, setDoc, getDoc } from 'firebase/firestore';
 import { db, getUser } from './firebaseFunctions.js';
 
 export const updateWeight = (userWeight) => {
@@ -13,3 +13,29 @@ export const updateWeight = (userWeight) => {
         console.error(error.message);
     }
 };
+
+export async function getUserField(user, field) {
+    try {
+        const userRef = doc(db, "users", user.uid);
+        const userDoc = await getDoc(userRef);
+        if (userDoc.exists()) {
+            const fieldData = userDoc.data()[field];
+            return fieldData;
+        }
+        else {
+            console.error("user doc doesn't exist")
+        }
+    } catch (error) {
+        console.error(error.message);
+    }
+};
+
+
+
+/* export const getUserWeight = (user) => {
+    getUserData(user).then((userData) => {
+        const userWeight = userData["weight"];
+        console.log("userweight is " + userWeight)
+        return userWeight;
+    })
+}; */

@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import { firebaseConfig } from './config.js'
 import { initializeApp } from 'firebase/app';
 import { getFirestore, doc, setDoc } from 'firebase/firestore';
@@ -9,7 +10,24 @@ export const auth = getAuth(app);
 export const googleProvider = new GoogleAuthProvider();
 
 //returns user object of current user, returns null if no user signed in
-const getUser = () => {
+function useUser() {
+    const [user, setUser] = useState(null);
+    useEffect(() => {
+        console.log("useeffect")
+        const authInstance = getAuth();
+        const unsubscribe = onAuthStateChanged(authInstance, (user) => {
+            setUser(user);
+            console.log("reached auth" + user);
+        });
+        return () => {
+            unsubscribe();
+        };
+    }, []);
+    console.log("final " + user);
+    return user;
+}
+
+function getUser() {
     return auth.currentUser;
 }
 
@@ -30,7 +48,6 @@ const signInWithGoogle = () => {
             email: userCredential.user.email
         }, { merge: true });
     })
-
 };
 
-export { signUpWithEmail, signInWithGoogle, getUser };
+export { signUpWithEmail, signInWithGoogle, useUser, getUser };
