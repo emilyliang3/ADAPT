@@ -1,11 +1,13 @@
-import { signUpWithEmail, signInWithGoogle, auth, getUser } from './firebaseFunctions';
+import { signUpWithEmail, signInWithGoogle, auth } from './firebaseFunctions';
 import { signOut } from "firebase/auth";
 import { useState } from "react";
+import { useUser } from './firebaseFunctions';
 //import { BrowserRouter, Route, Link } from "react-router-dom";
 
 export default function LoginButtons(){
     const [email, setemail] = useState("");
     const [password, setPassword] = useState("");
+    const user = useUser();
 
     const logout = async () => {
         try {
@@ -17,7 +19,7 @@ export default function LoginButtons(){
 
     // TODO: re render page when sign in state changes
     function SignInDisplay(){
-      if (getUser()){
+      if (user){
         return <h3>You are signed in! Please navigate to home, workout, or food.</h3>;
       }
       return <h3>You are not signed in! Please sign in before navigating to other pages.</h3>;

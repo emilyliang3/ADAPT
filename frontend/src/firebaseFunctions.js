@@ -13,22 +13,15 @@ export const googleProvider = new GoogleAuthProvider();
 function useUser() {
     const [user, setUser] = useState(null);
     useEffect(() => {
-        console.log("useeffect")
         const authInstance = getAuth();
         const unsubscribe = onAuthStateChanged(authInstance, (user) => {
             setUser(user);
-            console.log("reached auth" + user);
         });
         return () => {
             unsubscribe();
         };
     }, []);
-    console.log("final " + user);
     return user;
-}
-
-function getUser() {
-    return auth.currentUser;
 }
 
 const signUpWithEmail = (email, password) => {
@@ -50,4 +43,4 @@ const signInWithGoogle = () => {
     })
 };
 
-export { signUpWithEmail, signInWithGoogle, useUser, getUser };
+export { signUpWithEmail, signInWithGoogle, useUser };
