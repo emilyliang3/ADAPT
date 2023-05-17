@@ -1,6 +1,11 @@
+import gym1 from './images/gym1.jpg';
+import gym2 from './images/gym2.jpg';
+import gym3 from './images/gym3.jpg';
+
 import { signUpWithEmail, signInWithGoogle, auth } from './firebaseFunctions';
 import { signOut } from "firebase/auth";
-import { useState, useEffect } from "react";
+import { useState } from "react";
+import React, { useEffect } from 'react';
 import { useUser } from './firebaseFunctions';
 //import { BrowserRouter, Route, Link } from "react-router-dom";
 
@@ -50,6 +55,10 @@ export default function LoginButtons(){
       <button onClick={logout}> Logout </button>
       
       <h3>{welcomeMessage}</h3>
+      <img src = {gym1} className = "picture"/>
+      <img src = {gym2} className = "picture"/>
+      <img src = {gym3} className = "picture"/>
+      
     </div>
     );
 };
