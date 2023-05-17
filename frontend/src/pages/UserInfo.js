@@ -7,42 +7,77 @@ function UserInfo() {
     const user = useUser();
     const [name, setName] = useState("")
     const [weight, setWeight] = useState("");
-    const [birthMonth,setBirthMonth] = useState("");
-    const [birthDay,setBirthDay] = useState("");
-    const [birthYear,setBirthYear] = useState("");
+    const [height, setHeight] = useState("");
+    const [birthday,setBirthday] = useState("");
 
     // hook that runs when user variable is updated
     useEffect(() => {
         if (user) {
-            getUserField(user, "weight").then((weightValue) => {
-                const userWeight = weightValue;
-                if (userWeight) {
-                    setWeight(userWeight);
+            getUserField(user, "name").then((name) => {
+                if (name) {
+                    setName(name);
+                }
+            })
+            getUserField(user, "weight").then((weight) => {
+                if (weight) {
+                    setWeight(weight);
+                }
+                else {
+                    setWeight("not provided");
+                }
+            })
+            getUserField(user, "height").then((height) => {
+                if (height) {
+                    setHeight(height);
+                }
+                else {
+                    setHeight("not provided");
+                }
+            })
+            getUserField(user, "birthday").then((birthday) => {
+                if (birthday) {
+                    setBirthday(birthday);
+                }
+                else {
+                    setHeight("not provided");
                 }
             })
         }
-        else {
-            setWeight("");
-        }
     }, [user]);
 
-    function changeValue(weight) {
+    function changeWeight(weight) {
         setWeight(weight);
         updateUserField(user, "weight", weight);
+    }
+
+    function changeHeight(height) {
+        setHeight(height);
+        updateUserField(user, "height", height);
+    }
+
+    function changeName(name) {
+        setName(name);
+        updateUserField(user, "name", name);
+    }
+
+    function changeBirthday(birthday) {
+        setBirthday(birthday);
+        updateUserField(user, "birthday", birthday);
     }
 
     return (
         <>
             <h1>Hi {name}!</h1>
-            <MyForm question = "Name: " changeValue = { changeValue }/>
             <h2>Your Information:</h2>
-            <MyForm question = "Weight: " changeValue = { changeValue }/>
-            <h4>Your weight is {weight}</h4>
-            <MyForm question = "Birth Month (1-12): " changeValue = { changeValue }/>
-            <MyForm question = "Birth Day (1-31): " changeValue = { changeValue }/>
-            <MyForm question = "Birth Year (1900-2023): " changeValue = { changeValue }/>
-            <h4>{birthMonth} / {birthDay} / {birthYear}</h4>
-            
+            <h3>Weight: {weight} lb</h3>
+            <h3>Height: {height} in</h3>
+            <h3>Birthday: {birthday}</h3>
+            <br></br>
+            <h2>Update Your Information:</h2>
+            <MyForm question = "Name: " changeValue = { changeName }/>
+            <MyForm question = "Weight: " changeValue = { changeWeight }/>
+            <MyForm question = "Height: " changeValue = { changeHeight }/>
+            <MyForm question = "Birthday (MM/DD/YYYY): " changeValue = { changeBirthday }/>
         </>
     );
 }
