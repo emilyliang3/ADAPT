@@ -1,18 +1,34 @@
 import MyForm from '../question-textbox'
-import { useState } from "react";
-import { updateWeight } from '../userFunctions.js';
+import { useState, useEffect } from "react";
+import { updateUserField, getUserField } from '../userFunctions.js';
+import { useUser } from '../firebaseFunctions';
 
 function UserInfo() {
+    const user = useUser();
     const [name, setName] = useState("")
-    const [weight,setWeight] = useState("");
+    const [weight, setWeight] = useState("");
     const [birthMonth,setBirthMonth] = useState("");
     const [birthDay,setBirthDay] = useState("");
     const [birthYear,setBirthYear] = useState("");
 
+    // hook that runs when user variable is updated
+    useEffect(() => {
+        if (user) {
+            getUserField(user, "weight").then((weightValue) => {
+                const userWeight = weightValue;
+                if (userWeight) {
+                    setWeight(userWeight);
+                }
+            })
+        }
+        else {
+            setWeight("");
+        }
+    }, [user]);
 
     function changeValue(weight) {
         setWeight(weight);
-        updateWeight(weight);
+        updateUserField(user, "weight", weight);
     }
 
     return (

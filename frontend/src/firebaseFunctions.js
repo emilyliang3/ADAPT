@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import { firebaseConfig } from './config.js'
 import { initializeApp } from 'firebase/app';
 import { getFirestore, doc, setDoc } from 'firebase/firestore';
@@ -9,8 +10,18 @@ export const auth = getAuth(app);
 export const googleProvider = new GoogleAuthProvider();
 
 //returns user object of current user, returns null if no user signed in
-const getUser = () => {
-    return auth.currentUser;
+function useUser() {
+    const [user, setUser] = useState(null);
+    useEffect(() => {
+        const authInstance = getAuth();
+        const unsubscribe = onAuthStateChanged(authInstance, (user) => {
+            setUser(user);
+        });
+        return () => {
+            unsubscribe();
+        };
+    }, []);
+    return user;
 }
 
 const signUpWithEmail = (email, password) => {
@@ -30,7 +41,6 @@ const signInWithGoogle = () => {
             email: userCredential.user.email
         }, { merge: true });
     })
-
 };
 
-export { signUpWithEmail, signInWithGoogle, getUser };
+export { signUpWithEmail, signInWithGoogle, useUser };
