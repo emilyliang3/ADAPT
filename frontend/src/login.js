@@ -1,13 +1,24 @@
 import { signUpWithEmail, signInWithGoogle, auth } from './firebaseFunctions';
 import { signOut } from "firebase/auth";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useUser } from './firebaseFunctions';
 //import { BrowserRouter, Route, Link } from "react-router-dom";
 
 export default function LoginButtons(){
     const [email, setemail] = useState("");
     const [password, setPassword] = useState("");
+    const [welcomeMessage, setWelcomeMessage] = useState("");
     const user = useUser();
+
+    // changes welcome message when user variable is updated
+    useEffect(() => {
+      if (user) {
+          setWelcomeMessage("You are signed in! Please navigate to home, workout, or food.");
+      }
+      else {
+          setWelcomeMessage("You are not signed in! Please sign in before navigating to other pages.");
+      }
+    }, [user]);
 
     const logout = async () => {
         try {
@@ -16,14 +27,6 @@ export default function LoginButtons(){
             console.error(err);
           }
     };
-
-    // TODO: re render page when sign in state changes
-    function SignInDisplay(){
-      if (user){
-        return <h3>You are signed in! Please navigate to home, workout, or food.</h3>;
-      }
-      return <h3>You are not signed in! Please sign in before navigating to other pages.</h3>;
-    }
 
     return (
     <div>
@@ -46,7 +49,7 @@ export default function LoginButtons(){
       <button onClick={() => signInWithGoogle()}> Sign In with Google</button>
       <button onClick={logout}> Logout </button>
       
-      <SignInDisplay />
+      <h3>{welcomeMessage}</h3>
     </div>
     );
 };
