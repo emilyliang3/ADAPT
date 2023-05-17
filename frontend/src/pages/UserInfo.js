@@ -15,6 +15,7 @@ function UserInfo() {
             <h2>Your Information:</h2>
             <MyForm question = "Weight: " changeValue = { changeValue }/>
             <h4>Your weight is {weight}</h4>
+            <MyForm question = "Weight: " changeValue = { changeValue }/>
         </>
     );
 }
