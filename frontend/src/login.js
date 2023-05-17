@@ -1,6 +1,7 @@
 import { signUpWithEmail, signInWithGoogle, auth } from './firebaseFunctions';
 import { signOut } from "firebase/auth";
-import { useState, useEffect } from "react";
+import { useState } from "react";
+import React, { useEffect } from 'react';
 import { useUser } from './firebaseFunctions';
 //import { BrowserRouter, Route, Link } from "react-router-dom";
 
