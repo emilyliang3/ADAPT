@@ -1,5 +1,6 @@
 # ADAPT
 CS35L Project
+cd into frontend
 First, download the files from the repo.
 Run:
 npm install firebase
