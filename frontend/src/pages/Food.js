@@ -2,11 +2,16 @@ import food1 from '../images/food1.jpg';
 import food2 from '../images/food2.jpg';
 import food3 from '../images/food3.jpg';
 const Apple = ["Apple","fruit","95"]
+
 function Food() {
     function Food({arr}) {
         return (
           <div>
             <h1>This is the food</h1>
+            <button type="Sort by calories">Sort by calories</button>
+            <button type="Sort by protein">Sort by protein</button>
+
+
             <ol>
               {arr.map((item, index) => (
                 <li key={index}>{item}</li>
@@ -18,6 +23,7 @@ function Food() {
     return (
         <>
             <h1>this is the food</h1>
+
             <Food arr = {Apple} />
             <img src = {food1} className = "picture"/>
             <img src = {food2} className = "picture"/>
