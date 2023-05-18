@@ -21,7 +21,10 @@ function Food() {
       const name = "taco";
       const nutritionalInfo = "none";
       const ingredients = ["salt","sugar"];
-      const tags = ["high protein", "dairy free"];
+      const df = true;
+      const gf = true;
+      const veg = true;
+
       return (
         <>
           <h3>Our recipe makes a {name}</h3>
@@ -38,6 +41,8 @@ function Food() {
     return (
         <>
             <h1>this is the food</h1>
+            <button type="Sort by calories">Sort by calories</button>
+            <button type="Sort by protein">Sort by protein</button>
             <Food arr = {Apple} />
             <DisplayOneRecipe />
             <img src = {food1} className = "picture"/>
