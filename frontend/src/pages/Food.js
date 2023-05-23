@@ -12,6 +12,9 @@ function Food() {
     const [protein, setProtein] = useState("N/A");
     const [ingredients, setIngredients] = useState([]);
     const [instructions, setInstructions] = useState("N/A");
+    const [DF, setDF] = useState(false);
+    const [GF, setGF] = useState(false);
+    const [veg, setVeg] = useState(false);
 
     getRecipeData(recipeName).then((obj) => {
       if (obj.name) {
@@ -31,6 +34,15 @@ function Food() {
       }
       if (obj.instructions) {
         setInstructions(obj.instructions);
+      }
+      if (obj.df) {
+        setDF(obj.df);
+      }
+      if (obj.gf) {
+        setGF(obj.gf);
+      }
+      if (obj.veg) {
+        setVeg(obj.veg);
       }
     });
 
