@@ -24,7 +24,11 @@ function Food() {
       const df = true;
       const gf = true;
       const veg = true;
-
+      function Tag({tagName,tf}){
+        if (tf)
+          return <h4>{tagName}</h4>;
+        return;
+      }
       return (
         <>
           <h3>Our recipe makes a {name}</h3>
@@ -34,7 +38,11 @@ function Food() {
             {ingredients.map((item, index) => (
               <li key={index}>{item}</li>
             ))}
-          </ol>                    
+          </ol>
+          <h3>Tags</h3> 
+          <Tag tagName = 'DF' tf = {df} />
+          <Tag tagName = 'GF' tf = {gf} />
+          <Tag tagName = 'VEG' tf = {veg} />                  
         </>
       );
     }
