@@ -16,6 +16,12 @@ function Food() {
     const [GF, setGF] = useState(false);
     const [veg, setVeg] = useState(false);
 
+    function Tag({tagName,tf}){
+      if (tf)
+        return <h4>{tagName}</h4>;
+      return;
+    }
+
     getRecipeData(recipeName).then((obj) => {
       if (obj.name) {
         setName(obj.name);
@@ -59,6 +65,10 @@ function Food() {
             <li key={index}>{item}</li>
           ))}
         </ol> 
+        <h3>Tags</h3> 
+        <Tag tagName = 'DF' tf = {df} />
+        <Tag tagName = 'GF' tf = {gf} />
+        <Tag tagName = 'VEG' tf = {veg} />     
         <a href={instructions}>Click here for instructions and full recipe</a>                   
       </>
     );
@@ -67,6 +77,8 @@ function Food() {
     return (
         <>
             <h1>Recipe Search</h1>
+            <button type="Sort by calories">Sort by calories</button>
+            <button type="Sort by protein">Sort by protein</button>
             <h3>search gui will eventually be here...</h3>
             <h2>Here are some recipes that fit your criteria!</h2>
             <DisplayOneRecipe recipeName = "PeanutButterBananaPancakes" />
