@@ -25,6 +25,14 @@ function MyForm() {
     event.preventDefault();
     // Handle form submission or perform any desired actions with checkboxValues
     console.log(checkboxValues);
+    setCheckboxValues({
+      highProtein: false,
+      lowFat: false,
+      lowCalorie: false,
+      dairyFree: false,
+      glutenFree: false,
+      vegetarian: false,
+    });
   };
 
   return (
