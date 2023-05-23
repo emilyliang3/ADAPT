@@ -1,5 +1,10 @@
-import { doc, getDoc } from 'firebase/firestore';
+import { doc, getDoc, getDocs, collection, where, query } from 'firebase/firestore';
 import { db } from './firebaseFunctions.js';
+
+// recipe constant values
+const PROTEIN_MIN = 7;
+const FAT_MAX = 5;
+const CAL_MAX = 600;
 
 export async function getRecipeData(recipe_id) {
     try {
@@ -26,3 +31,60 @@ export async function getRecipeData(recipe_id) {
         console.error(error.message);
     }
 };
+
+async function getQueryRecipesList(field, operator, value) {
+    const recipeslist = [];
+    try {
+        const ref = collection(db, "recipes");
+        const q = query(ref, where(field, operator, value));
+        const qsnap = await getDocs(q);
+        qsnap.foreach((recipe) => {
+            recipeslist.push(recipe.id);
+        });
+    } catch (error) {
+        console.error(error.message);
+    }
+    return recipeslist;
+}
+
+export function searchRecipes(protein, fat, cal, df, gf, veg) {
+    const proteinlist = [];
+    const fatlist = [];
+    const callist = [];
+    const dflist = [];
+    const gflist = [];
+    const veglist = [];
+
+    if (protein) {
+        proteinlist = getQueryRecipesList("proteein", ">=", PROTEIN_MIN);
+    }
+    if (fat) {
+        fatlist = getQueryRecipesList("fat", "<=", FAT_MAX);
+    }
+    if (cal) {
+        callist = getQueryRecipesList("calories", "<=", CAL_MAX);
+    }
+    if (df) {
+        dflist = getQueryRecipesList("df", "==", true);
+    }
+    if (gf) {
+        gflist = getQueryRecipesList("gf", "==", true);
+    }
+    if (veg) {
+        veglist = getQueryRecipesList("veg", "==", true);
+    }
+
+    const allLists = [proteinlist, fatlist, callist, dflist, gflist, veglist];
+    let commonRecipes = allLists.find(array => array.length > 0);
+    if (commonRecipes) {
+        allLists.slice(1).foreach(array => {
+            commonRecipes = commonRecipes.filter(value => array.includes(value));
+        });
+    }
+    else {
+        return [];
+    }
+    
+    return commonRecipes;
+}
+
