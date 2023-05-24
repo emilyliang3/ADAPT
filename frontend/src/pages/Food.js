@@ -159,7 +159,7 @@ function Food() {
   }
   const test = ["food1","food2","food3"];
   return (
-    <>
+    <div className = "shift-right">
       <MyForm />
       <h1>this is the food</h1>
       <button type="Sort by calories">Sort by calories</button>
@@ -170,7 +170,8 @@ function Food() {
       <img src = {food2} className = "picture"/>
       <img src = {food3} className = "picture"/>
       <DisplayMultiple test = {test} />
-    </>
+    </div>
+
   );
 }
 
