@@ -28,10 +28,10 @@ function DisplayOneRecipe({recipeName}){
     if (obj.calories) {
       setCalories(obj.calories);
     }
-    if (obj.fat) {
+    if (obj.fat || obj.fat == 0) {
       setFat(obj.fat);
     }
-    if (obj.protein) {
+    if (obj.protein || obj.protein == 0) {
       setProtein(obj.protein);
     }
     if (obj.ingredients) {
