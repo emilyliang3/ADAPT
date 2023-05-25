@@ -6,7 +6,7 @@ import { getRecipeData } from '../recipeFunctions';
 
 function Food() {
   function DisplayOneRecipe({recipeName}){
-    const [name, setName] = useState("N/A");
+    const [name, setName] = useState("N/A"); 
     const [calories, setCalories] = useState("N/A");
     const [fat, setFat] = useState("N/A");
     const [protein, setProtein] = useState("N/A");
@@ -47,7 +47,9 @@ function Food() {
             <li key={index}>{item}</li>
           ))}
         </ol> 
-        <a href={instructions}>Click here for instructions and full recipe</a>                   
+        <a href={instructions}>Click here for instructions and full recipe</a>
+        
+                           
       </>
     );
     }
