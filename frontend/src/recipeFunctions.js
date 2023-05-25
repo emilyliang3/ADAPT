@@ -84,7 +84,7 @@ export function searchRecipes(protein, fat, cal, df, gf, veg) {
     else {
         return [];
     }
-    
+
     return commonRecipes;
 }
 
