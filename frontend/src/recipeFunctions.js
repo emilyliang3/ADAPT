@@ -2,7 +2,7 @@ import { doc, getDoc, getDocs, collection, where, query } from 'firebase/firesto
 import { db } from './firebaseFunctions.js';
 
 // recipe constant values
-const PROTEIN_MIN = 7;
+const PROTEIN_MIN = 5;
 const FAT_MAX = 5;
 const CAL_MAX = 600;
 
@@ -38,7 +38,7 @@ async function getQueryRecipesList(field, operator, value) {
         const ref = collection(db, "recipes");
         const q = query(ref, where(field, operator, value));
         const qsnap = await getDocs(q);
-        qsnap.foreach((recipe) => {
+        qsnap.forEach((recipe) => {
             recipeslist.push(recipe.id);
         });
     } catch (error) {
@@ -47,44 +47,66 @@ async function getQueryRecipesList(field, operator, value) {
     return recipeslist;
 }
 
-export function searchRecipes(protein, fat, cal, df, gf, veg) {
-    const proteinlist = [];
-    const fatlist = [];
-    const callist = [];
-    const dflist = [];
-    const gflist = [];
-    const veglist = [];
+export async function searchRecipes(protein, fat, cal, df, gf, veg) {
+    let fatlist = [];
+    let proteinlist = [];
+    let callist = [];
+    let dflist = [];
+    let gflist = [];
+    let veglist = [];
 
     if (protein) {
-        proteinlist = getQueryRecipesList("proteein", ">=", PROTEIN_MIN);
+        try {
+            proteinlist = await getQueryRecipesList("protein", ">=", PROTEIN_MIN);
+        } catch(error) {
+            console.log(error);
+        }
     }
     if (fat) {
-        fatlist = getQueryRecipesList("fat", "<=", FAT_MAX);
+        try {
+            fatlist = await getQueryRecipesList("fat", "<=", FAT_MAX);
+        } catch(error) {
+            console.log(error);
+        }
     }
     if (cal) {
-        callist = getQueryRecipesList("calories", "<=", CAL_MAX);
+        try {
+            callist = await getQueryRecipesList("calories", "<=", CAL_MAX);
+        } catch(error) {
+            console.log(error);
+        }
     }
     if (df) {
-        dflist = getQueryRecipesList("df", "==", true);
+        try {
+            dflist = await getQueryRecipesList("df", "==", true);
+        } catch(error) {
+            console.log(error);
+        }
     }
     if (gf) {
-        gflist = getQueryRecipesList("gf", "==", true);
+        try {
+            gflist = await getQueryRecipesList("gf", "==", true);
+        } catch(error) {
+            console.log(error);
+        }
     }
     if (veg) {
-        veglist = getQueryRecipesList("veg", "==", true);
+        try {
+            veglist = await getQueryRecipesList("veg", "==", true);
+        } catch(error) {
+            console.log(error);
+        }
     }
-
     const allLists = [proteinlist, fatlist, callist, dflist, gflist, veglist];
-    let commonRecipes = allLists.find(array => array.length > 0);
-    if (commonRecipes) {
-        allLists.slice(1).foreach(array => {
-            commonRecipes = commonRecipes.filter(value => array.includes(value));
-        });
-    }
-    else {
+    let filteredLists = allLists.filter(array => array.length > 0);
+    if (!filteredLists) {
         return [];
     }
-
+    let commonRecipes = filteredLists[0];
+    filteredLists.slice(1).forEach(array => {
+        commonRecipes = commonRecipes.filter(value => array.includes(value));
+    });
+    console.log(commonRecipes);
     return commonRecipes;
 }
 
