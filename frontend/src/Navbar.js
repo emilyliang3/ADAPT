@@ -3,7 +3,7 @@ import { BrowserRouter, Route, Link } from "react-router-dom";
 
 function Navbar() {
   return (
-    <nav className = "navbar">
+    <nav>
       <ul>
         <li>
           <Link to="/">Log In</Link>
