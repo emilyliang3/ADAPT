@@ -2,7 +2,7 @@ import food1 from '../images/food1.jpg';
 import food2 from '../images/food2.jpg';
 import food3 from '../images/food3.jpg';
 import { useState } from "react";
-import { getWorkoutData, getQueryWorkoutsList } from '../workoutFunctions';
+import { getWorkoutData, searchWorkouts } from '../workoutFunctions';
 
 
 
@@ -16,8 +16,10 @@ import { getWorkoutData, getQueryWorkoutsList } from '../workoutFunctions';
 
     //Need to modify after sample created
     getWorkoutData(WorkoutName).then((obj) => {
+      console.log("ID")
+      console.log(obj.id)
       if (obj.id) {
-        setName(obj.name);
+        setName(obj.id);
       }
       if (obj.goal) {
         setgoal(obj.goal);
@@ -39,7 +41,7 @@ import { getWorkoutData, getQueryWorkoutsList } from '../workoutFunctions';
           <li key={index}>{item}</li>
         ))}
         </ol> 
-        <a href={Instructions}>Click here for instructions and full recipe</a>
+        <a href={Instructions}>Click here for instructions and full workout</a>
       </>
     );
   }
@@ -85,11 +87,14 @@ function Workout() {
     const handleSubmit = (event) => {
       event.preventDefault();
       // Handle form submission or perform any desired actions with checkboxValues
-      const options = Object.values(checkboxValues);
+      //const options = Object.values(checkboxValues);
+
       //testing
-      getQueryWorkoutsList("Upper Body", "biceps" ).then((workouts) => {
+      const options = Object.values(checkboxValues);
+      searchWorkouts(...options).then((workouts) => {
         if (workouts) {
           setWorkouts(workouts);
+          console.log(workouts);
         }
       });
       setCheckboxValues({
@@ -111,7 +116,7 @@ function Workout() {
             checked={checkboxValues.LowerBody}
             onChange={handleCheckboxChange}
           />
-          High Protein
+          LowerBody
         </label>
         <br />
         <label>
@@ -121,7 +126,7 @@ function Workout() {
             checked={checkboxValues.UpperBody}
             onChange={handleCheckboxChange}
           />
-          Low Fat
+          UpperBody
         </label>
         <br />
         <label>
@@ -131,7 +136,7 @@ function Workout() {
             checked={checkboxValues.FullBody}
             onChange={handleCheckboxChange}
           />
-          Low Calorie
+          FullBody
         </label>
         <br />
         <label>
@@ -141,7 +146,7 @@ function Workout() {
             checked={checkboxValues.Cardio}
             onChange={handleCheckboxChange}
           />
-          Dairy Free
+          Cardio
         </label>
         <br />
         <label>
@@ -151,7 +156,7 @@ function Workout() {
             checked={checkboxValues.Core}
             onChange={handleCheckboxChange}
           />
-          Gluten Free
+          Core
         </label>
         <br />
         <label>
@@ -161,6 +166,7 @@ function Workout() {
             checked={checkboxValues.Glutes}
             onChange={handleCheckboxChange}
           />
+          Glutes
         </label>
         <br />
         <button type="submit">Submit</button>
@@ -173,11 +179,10 @@ function Workout() {
       <h1>Hi! I'm AD, your personal Aiding Dietician!</h1>
       <h2>Select any goals options below and I'll find the best workout that match what you're looking for!</h2>
       <MyForm />
+      <div>{workouts}</div>
       <DisplayWorkouts workouts = {workouts} />
       <br></br>
-      <img src = {food1} className = "picture"/>
-      <img src = {food2} className = "picture"/>
-      <img src = {food3} className = "picture"/>
+      
     </div>
 
   );
