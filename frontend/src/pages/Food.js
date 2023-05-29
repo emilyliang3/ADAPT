@@ -3,6 +3,7 @@ import food2 from '../images/food2.jpg';
 import food3 from '../images/food3.jpg';
 import {useState} from 'react';
 import { getRecipeData, searchRecipes } from '../recipeFunctions';
+import './food.css'
 
 function DisplayOneRecipe({recipeName}){
   const [name, setName] = useState("N/A");
@@ -198,7 +199,7 @@ function Food() {
   }
 
   return (
-    <div className = "shift-right">
+    <div className = "centered">
       <h1>Hi! I'm AD, your personal Aiding Dietician!</h1>
       <h2>Select any nutritional content options below and I'll find the best recipes that match what you're looking for!</h2>
       <MyForm />
