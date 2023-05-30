@@ -1,6 +1,7 @@
 import workout1 from '../images/workout1.jpg';
 import workout2 from '../images/workout2.jpg';
 import workout3 from '../images/workout3.jpg';
+import {useState} from 'react';
 
 import food1 from '../images/food1.jpg';
 
