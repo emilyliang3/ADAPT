@@ -70,8 +70,7 @@ function DisplayOneRecipe({recipeName}){
       <Tag tagName = 'DF' tf = {DF} />
       <Tag tagName = 'GF' tf = {GF} />
       <Tag tagName = 'VEG' tf = {veg} />     
-      <a href={instructions}>Click here for instructions and full recipe</a>
-      <br></br>                   
+      <a href={instructions}>Click here for instructions and full recipe</a>            
     </div>
   );
 }
@@ -79,7 +78,10 @@ function DisplayOneRecipe({recipeName}){
 function DisplayRecipes({recipes}) {
   let recipeDisplayHeader = "";
   const allRecipes = recipes.map(name => (
+    <>
     <DisplayOneRecipe key={name} recipeName={name} />
+    <div className="space"></div>
+    </>
   ));
   if (recipes.length >= 1) {
     recipeDisplayHeader = "Here's the recipes that I found!"
@@ -114,6 +116,7 @@ function Food() {
 
     const handleSubmit = (event) => {
       event.preventDefault();
+      setRecipes([]);
       // Handle form submission or perform any desired actions with checkboxValues
       const options = Object.values(checkboxValues);
       searchRecipes(...options).then((recipes) => {
