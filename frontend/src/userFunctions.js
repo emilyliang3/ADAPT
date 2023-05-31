@@ -28,3 +28,29 @@ export async function getUserField(user, field) {
         console.error(error.message);
     }
 };
+
+export function calculateBMI(heightInInches, weightInPounds) {
+
+// Convert height to meters
+    const heightInMeters = heightInInches * 0.0254;
+
+// Convert weight to kilograms
+    const weightInKilograms = weightInPounds * 0.45359237;
+
+// Calculate BMI
+    const bmi = weightInKilograms / (heightInMeters * heightInMeters);
+
+// Return BMI rounded to two decimal places
+    return bmi.toFixed(2); 
+  }
+
+export async function calculateUserBMI(user) {
+  const height = await getUserField(user, 'height');
+  const weight = await getUserField(user, 'weight');
+
+  if (height && weight) {
+    const bmi = calculateBMI(height, weight);
+    return bmi;
+  }
+
+}
