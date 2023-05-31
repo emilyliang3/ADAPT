@@ -106,6 +106,5 @@ export async function searchRecipes(protein, fat, cal, df, gf, veg) {
     filteredLists.slice(1).forEach(array => {
         commonRecipes = commonRecipes.filter(value => array.includes(value));
     });
-    console.log(commonRecipes);
     return commonRecipes;
 }

@@ -10,6 +10,7 @@ import NoPage from "./pages/NoPage";
 
 
 import "./index.css";
+import "./navbar.css";
 
 export default function App() {
   return (

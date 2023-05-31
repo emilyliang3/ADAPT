@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export default function MyForm({question,changeValue}) {
+export default function MyForm({question,changeValue, type}) {
     const [name, setName] = useState("");
   
     function handleSubmit(event){
@@ -13,7 +13,7 @@ export default function MyForm({question,changeValue}) {
       <form onSubmit={handleSubmit}>
         <label>{question} 
           <input 
-            type="text" 
+            type={type} 
             value={name}
             onChange={(e) => setName(e.target.value)}
           />
