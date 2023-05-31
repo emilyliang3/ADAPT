@@ -19,7 +19,7 @@ function DisplayOneRecipe({recipeName}){
 
   function Tag({tagName,tf}){
     if (tf)
-      return <h4>{tagName}</h4>;
+      return <div className="tag">{tagName}</div>;
     return;
   }
 
@@ -54,22 +54,21 @@ function DisplayOneRecipe({recipeName}){
   });
 
   return (
-    <div className="foodform">
-      <h3>Recipe: {name}</h3>
-      <h3>Nutritional Info (per serving):</h3>
-      <h4>Calories: {calories}</h4>
-      <h4>Fat &#40;grams&#41;: {fat}</h4>
-      <h4>Protein &#40;grams&#41;: {protein}</h4>
-      <h3>Ingredients: </h3>
-      <ol>
+    <div className="box">
+      <h3 className="title">Recipe: {name}</h3>
+      <h3 className="header">Nutritional Info (per serving):</h3>
+      <p className="text">Calories: <b>{calories}</b><br></br>Fat &#40;grams&#41;: <b>{fat}</b>g<br></br>Protein &#40;grams&#41;: <b>{protein}</b>g</p>
+      <h3 className="header">Ingredients: </h3>
+      <ol className="text">
         {ingredients.map((item, index) => (
           <li key={index}>{item}</li>
         ))}
       </ol> 
-      <h3>Tags</h3> 
+      <h3 className="header">Tags</h3> 
       <Tag tagName = 'DF' tf = {DF} />
       <Tag tagName = 'GF' tf = {GF} />
-      <Tag tagName = 'VEG' tf = {veg} />     
+      <Tag tagName = 'VEG' tf = {veg} />    
+      <br></br> <br></br>
       <a href={instructions}>Click here for instructions and full recipe</a>            
     </div>
   );
@@ -88,7 +87,7 @@ function DisplayRecipes({recipes}) {
   }
   return (
     <div>
-    <h2>{recipeDisplayHeader}</h2>
+    <h2 className="blue">{recipeDisplayHeader}</h2>
     {allRecipes}
     </div>
   );
@@ -135,7 +134,7 @@ function Food() {
     };
 
     return (
-      <form onSubmit={handleSubmit} className="foodform">
+      <form onSubmit={handleSubmit} className="box">
         <label>
           <input
             type="checkbox"
@@ -202,7 +201,7 @@ function Food() {
   }
 
   return (
-    <div className = "centered">
+    <>
       <h1>Hi! I'm AD, your personal Aiding Dietician!</h1>
       <h2>Select any nutritional content options below and I'll find the best recipes that match what you're looking for!</h2>
       <MyForm />
@@ -211,7 +210,7 @@ function Food() {
       <img src = {food1} className = "picture"/>
       <img src = {food2} className = "picture"/>
       <img src = {food3} className = "picture"/>
-    </div>
+    </>
 
   );
 }

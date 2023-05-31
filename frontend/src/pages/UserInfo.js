@@ -250,7 +250,7 @@ export default function UserInfo() {
       <h3>Birthday: {birthday}</h3>
       <br></br>
       <h2>Update Your Information:</h2>
-      <div className="foodform">
+      <div className="box">
       <MyForm question="Name: " changeValue={changeName} type="text" />
       <MyForm question="Weight (lb): " changeValue={changeWeight} type="number"/>
       <MyForm question="Height (inches): " changeValue={changeHeight} type="number"/>
