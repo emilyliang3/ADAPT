@@ -3,7 +3,6 @@ import { updateUserField, getUserField } from '../userFunctions.js';
 import { useUser } from '../firebaseFunctions';
 import MyForm from '../question-textbox';
 
-
 function FitnessForm() {
   const [currentWeight, setCurrentWeight] = useState('');
   const [goalWeight, setGoalWeight] = useState('');
@@ -241,8 +240,8 @@ function UserInfo() {
   }
 
   return (
-    <div>
-      <h1 >Hi {name}!</h1>
+    <>
+      <h1>Hi {name}!</h1>
       <h2>Your Information:</h2>
       <h3>Weight: {weight} lb</h3>
       <h3>Height: {height} in</h3>
@@ -253,17 +252,15 @@ function UserInfo() {
       <MyForm question="Weight: " changeValue={changeWeight} />
       <MyForm question="Height: " changeValue={changeHeight} />
       <MyForm question="Birthday (MM/DD/YYYY): " changeValue={changeBirthday} />
-    </div>
-
+    </>
   );
 }
 
 export default function FitnessApp() {
   return (
-    <div className = "shift-right">
+    <>
       <FitnessForm />
       <UserInfo />
-    </div>
-
+    </>
   );
 }
