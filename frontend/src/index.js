@@ -7,6 +7,8 @@ import Food from "./pages/Food";
 import Workout from "./pages/Workout";
 import Login from "./pages/Login";
 import NoPage from "./pages/NoPage";
+
+
 import "./index.css";
 import "./navbar.css";
 

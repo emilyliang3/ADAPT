@@ -108,4 +108,3 @@ export async function searchRecipes(protein, fat, cal, df, gf, veg) {
     });
     return commonRecipes;
 }
-

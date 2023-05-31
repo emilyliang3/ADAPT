@@ -1,9 +1,7 @@
 import LoginButtons from '../login';
 function Login() {
     return (
-        <div className = "shift-right">
-            <LoginButtons/>
-        </div>
+        <LoginButtons />
     );
 }
 
