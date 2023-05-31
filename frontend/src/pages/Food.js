@@ -3,7 +3,8 @@ import food2 from '../images/food2.jpg';
 import food3 from '../images/food3.jpg';
 import {useState} from 'react';
 import { getRecipeData, searchRecipes } from '../recipeFunctions';
-import './food.css'
+import '../index.css';
+import './food.css';
 
 function DisplayOneRecipe({recipeName}){
   const [name, setName] = useState("N/A");
@@ -53,7 +54,7 @@ function DisplayOneRecipe({recipeName}){
   });
 
   return (
-    <>
+    <div className="foodform">
       <h3>Recipe: {name}</h3>
       <h3>Nutritional Info (per serving):</h3>
       <h4>Calories: {calories}</h4>
@@ -69,8 +70,9 @@ function DisplayOneRecipe({recipeName}){
       <Tag tagName = 'DF' tf = {DF} />
       <Tag tagName = 'GF' tf = {GF} />
       <Tag tagName = 'VEG' tf = {veg} />     
-      <a href={instructions}>Click here for instructions and full recipe</a>                   
-    </>
+      <a href={instructions}>Click here for instructions and full recipe</a>
+      <br></br>                   
+    </div>
   );
 }
 
@@ -101,8 +103,6 @@ function Food() {
   });
   const [recipes, setRecipes] = useState([]);
 
-
-
   function MyForm() {
     const handleCheckboxChange = (event) => {
       const { name, checked } = event.target;
@@ -132,7 +132,7 @@ function Food() {
     };
 
     return (
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="foodform">
         <label>
           <input
             type="checkbox"
