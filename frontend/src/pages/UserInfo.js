@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { updateUserField, getUserField } from '../userFunctions.js';
 import { useUser } from '../firebaseFunctions';
 import MyForm from '../question-textbox';
-import './food.css';
+import './userinfo.css';
 
 export default function UserInfo() {
   const user = useUser();
@@ -66,9 +66,11 @@ export default function UserInfo() {
     <>
       <h1>Hi {name}!</h1>
       <h2>Your Information:</h2>
-      <h3>Weight: {weight} lb</h3>
-      <h3>Height: {height} in</h3>
-      <h3>Birthday: {birthday}</h3>
+      <div className="box">
+      <h3 className="header">Weight (lb): <div className="black">{weight}</div></h3>
+      <h3 className="header">Height (inches): <div className="black">{height}</div></h3>
+      <h3 className="header">Birthday: <div className="black">{birthday}</div></h3>
+      </div>
       <br></br>
       <h2>Update Your Information:</h2>
       <div className="box">
