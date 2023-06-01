@@ -73,37 +73,44 @@ export async function searchWorkouts(lowerbody, upperbody, fullbody, cardio, cor
     }
     if (cardio) {
         try {
-            cardiolist = await getQueryWorkoutsList("goal", "==", "cardio");
+            cardiolist = await getQueryWorkoutsList("goal", "==", "Cardio");
         } catch(error) {
             console.log(error);
         }
     }
     if (core) {
         try {
-            corelist = await getQueryWorkoutsList("goal", "==", "core");
+            corelist = await getQueryWorkoutsList("goal", "==", "Core");
         } catch(error) {
             console.log(error);
         }
     }
     if (glutes) {
         try {
-            gluteslist = await getQueryWorkoutsList("goal", "==", "glutes");
+            gluteslist = await getQueryWorkoutsList("goal", "==", "Glutes");
         } catch(error) {
             console.log(error);
         }
     }
     const allLists = [lowerbodylist, upperbodylist, fullbodylist, cardiolist, corelist, gluteslist];
-    let filteredLists = allLists.filter(array => array.length > 0);
-    if (!filteredLists) {
-        return [];
-    }
-    let commonRecipes = filteredLists[0];
+    //let filteredLists = allLists.filter(array => array.length > 0);
+    //if (!filteredLists) {
+    //    return [];
+    //}
+
+    // Flatten the array and create a new Set to get unique values
+    const uniqueValues = [...new Set(allLists.flat())];
+
+    //let commonRecipes = filteredLists[0];
     //filteredLists.slice(1).forEach(array => {
     //    commonRecipes = commonRecipes.filter(value => array.includes(value));
     //});
     //console.log("In filter")
     //console.log(commonRecipes);
     //console.log(filteredLists);
-    return commonRecipes;
+    //console.log("unique")
+    //console.log(uniqueValues)
+    return uniqueValues;
+    //return filteredLists;
 }
 
