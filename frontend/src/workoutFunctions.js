@@ -113,4 +113,3 @@ export async function searchWorkouts(lowerbody, upperbody, fullbody, cardio, cor
     return uniqueValues;
     //return filteredLists;
 }
-
