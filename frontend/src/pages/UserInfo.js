@@ -64,7 +64,7 @@ export default function UserInfo() {
 
   return (
     <>
-      <h1>Hi {name}!</h1>
+      <h1 className = "font-heading" >Hi {name}!</h1>
       <h2>Your Information:</h2>
       <div className="box">
       <h3 className="header">Weight (lb): <div className="black">{weight}</div></h3>
