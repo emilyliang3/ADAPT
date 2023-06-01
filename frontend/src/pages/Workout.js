@@ -14,13 +14,9 @@ import { getWorkoutData, searchWorkouts } from '../workoutFunctions';
 
     //Need to modify after sample created
     getWorkoutData(WorkoutName).then((obj) => {
-      console.log("ID")
-      //console.log(name)
 
       if (obj.name) {
         setName(obj.name);
-        console.log("setName")
-        console.log(name)
       }
 
       if (obj.goal) {
@@ -35,16 +31,17 @@ import { getWorkoutData, searchWorkouts } from '../workoutFunctions';
     });
 
     return (
-      <>
-        <h3>Workout testing: {name}</h3>
-        <h3>Muscles groups:</h3>
+      <div className = "box">
+        <h3 className = "title">{name}</h3>
+        <h3 className = "header">Muscles groups:</h3>
         <ol>
         {muscles.map((item, index) => (
-          <li key={index}>{item}</li>
+          <li key={index} className = "tag">{item}</li>
+          
         ))}
         </ol> 
         <a href={Instructions}>Click here for instructions and full workout</a>
-      </>
+      </div>
     );
   }
 
@@ -92,6 +89,7 @@ function Workout() {
       //const options = Object.values(checkboxValues);
 
       //testing
+      setWorkouts([]);
       const options = Object.values(checkboxValues);
       searchWorkouts(...options).then((workouts) => {
         if (workouts) {
@@ -110,7 +108,7 @@ function Workout() {
     };
 
     return (
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className = "box">
         <label>
           <input
             type="checkbox"
