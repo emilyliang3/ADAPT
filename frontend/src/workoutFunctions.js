@@ -101,9 +101,9 @@ export async function searchWorkouts(lowerbody, upperbody, fullbody, cardio, cor
     //filteredLists.slice(1).forEach(array => {
     //    commonRecipes = commonRecipes.filter(value => array.includes(value));
     //});
-    console.log("In filter")
-    console.log(commonRecipes);
-    console.log(filteredLists);
+    //console.log("In filter")
+    //console.log(commonRecipes);
+    //console.log(filteredLists);
     return commonRecipes;
 }
 
