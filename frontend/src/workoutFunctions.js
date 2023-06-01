@@ -98,10 +98,12 @@ export async function searchWorkouts(lowerbody, upperbody, fullbody, cardio, cor
         return [];
     }
     let commonRecipes = filteredLists[0];
-    filteredLists.slice(1).forEach(array => {
-        commonRecipes = commonRecipes.filter(value => array.includes(value));
-    });
-    console.log(commonRecipes);
+    //filteredLists.slice(1).forEach(array => {
+    //    commonRecipes = commonRecipes.filter(value => array.includes(value));
+    //});
+    //console.log("In filter")
+    //console.log(commonRecipes);
+    //console.log(filteredLists);
     return commonRecipes;
 }
 
