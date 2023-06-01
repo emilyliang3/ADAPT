@@ -73,21 +73,21 @@ export async function searchWorkouts(lowerbody, upperbody, fullbody, cardio, cor
     }
     if (cardio) {
         try {
-            cardiolist = await getQueryWorkoutsList("goal", "==", "cardio");
+            cardiolist = await getQueryWorkoutsList("goal", "==", "Cardio");
         } catch(error) {
             console.log(error);
         }
     }
     if (core) {
         try {
-            corelist = await getQueryWorkoutsList("goal", "==", "core");
+            corelist = await getQueryWorkoutsList("goal", "==", "Core");
         } catch(error) {
             console.log(error);
         }
     }
     if (glutes) {
         try {
-            gluteslist = await getQueryWorkoutsList("goal", "==", "glutes");
+            gluteslist = await getQueryWorkoutsList("goal", "==", "Glutes");
         } catch(error) {
             console.log(error);
         }
