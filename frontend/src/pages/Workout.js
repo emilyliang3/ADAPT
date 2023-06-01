@@ -1,6 +1,6 @@
-import food1 from '../images/food1.jpg';
-import food2 from '../images/food2.jpg';
-import food3 from '../images/food3.jpg';
+import workout1 from '../images/workout1.jpg';
+import workout2 from '../images/workout2.jpg';
+import workout3 from '../images/workout3.jpg';
 import { useState } from "react";
 import { getWorkoutData, searchWorkouts } from '../workoutFunctions';
 
@@ -14,13 +14,9 @@ import { getWorkoutData, searchWorkouts } from '../workoutFunctions';
 
     //Need to modify after sample created
     getWorkoutData(WorkoutName).then((obj) => {
-      console.log("ID")
-      //console.log(name)
 
       if (obj.name) {
         setName(obj.name);
-        console.log("setName")
-        console.log(name)
       }
 
       if (obj.goal) {
@@ -35,16 +31,18 @@ import { getWorkoutData, searchWorkouts } from '../workoutFunctions';
     });
 
     return (
-      <>
-        <h3>Workout testing: {name}</h3>
-        <h3>Muscles groups:</h3>
-        <ol>
+      <div className = "box">
+        <h3 className = "title">{name}</h3>
+        <h3 className = "header">Muscles groups:</h3>
+        <ul className = "table">
         {muscles.map((item, index) => (
-          <li key={index}>{item}</li>
+          <li key={index} className = "tag2">{item}</li>
+          
         ))}
-        </ol> 
+        </ul>
+        <br></br> 
         <a href={Instructions}>Click here for instructions and full workout</a>
-      </>
+      </div>
     );
   }
 
@@ -92,6 +90,7 @@ function Workout() {
       //const options = Object.values(checkboxValues);
 
       //testing
+      setWorkouts([]);
       const options = Object.values(checkboxValues);
       searchWorkouts(...options).then((workouts) => {
         if (workouts) {
@@ -110,7 +109,7 @@ function Workout() {
     };
 
     return (
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className = "box">
         <label>
           <input
             type="checkbox"
@@ -180,15 +179,22 @@ function Workout() {
     <div>
       <h1>Hi! I'm AD, your personal Aiding Dietician!</h1>
       <h2>Select any goals options below and I'll find the best workout that match what you're looking for!</h2>
-      <MyForm />
+      <div className = "color">
+        <MyForm/>
+      </div>
+        
       <DisplayWorkouts workouts = {workouts} />
       <br></br>
+      <img src = {workout1} className = "picture"/>
+      <img src = {workout2} className = "picture"/>
+      <img src = {workout3} className = "picture"/>
       
     </div>
 
   );
 }
+
 export default Workout;
 
 
-//this is git testing line
+

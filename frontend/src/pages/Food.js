@@ -134,69 +134,69 @@ function Food() {
     };
 
     return (
-      <form onSubmit={handleSubmit} className="box">
-        <label>
-          <input
-            type="checkbox"
-            name="highProtein"
-            checked={checkboxValues.highProtein}
-            onChange={handleCheckboxChange}
-          />
-          High Protein
-        </label>
-        <br />
-        <label>
-          <input
-            type="checkbox"
-            name="lowFat"
-            checked={checkboxValues.lowFat}
-            onChange={handleCheckboxChange}
-          />
-          Low Fat
-        </label>
-        <br />
-        <label>
-          <input
-            type="checkbox"
-            name="lowCalorie"
-            checked={checkboxValues.lowCalorie}
-            onChange={handleCheckboxChange}
-          />
-          Low Calorie
-        </label>
-        <br />
-        <label>
-          <input
-            type="checkbox"
-            name="dairyFree"
-            checked={checkboxValues.dairyFree}
-            onChange={handleCheckboxChange}
-          />
-          Dairy Free
-        </label>
-        <br />
-        <label>
-          <input
-            type="checkbox"
-            name="glutenFree"
-            checked={checkboxValues.glutenFree}
-            onChange={handleCheckboxChange}
-          />
-          Gluten Free
-        </label>
-        <br />
-        <label>
-          <input
-            type="checkbox"
-            name="vegetarian"
-            checked={checkboxValues.vegetarian}
-            onChange={handleCheckboxChange}
-          />
-          Vegetarian
-        </label>
-        <br />
-        <button type="submit">Submit</button>
-      </form>
+        <form onSubmit={handleSubmit} className="box">
+          <label>
+            <input
+              type="checkbox"
+              name="highProtein"
+              checked={checkboxValues.highProtein}
+              onChange={handleCheckboxChange}
+            />
+            High Protein
+          </label>
+          <br />
+          <label>
+            <input
+              type="checkbox"
+              name="lowFat"
+              checked={checkboxValues.lowFat}
+              onChange={handleCheckboxChange}
+            />
+            Low Fat
+          </label>
+          <br />
+          <label>
+            <input
+              type="checkbox"
+              name="lowCalorie"
+              checked={checkboxValues.lowCalorie}
+              onChange={handleCheckboxChange}
+            />
+            Low Calorie
+          </label>
+          <br />
+          <label>
+            <input
+              type="checkbox"
+              name="dairyFree"
+              checked={checkboxValues.dairyFree}
+              onChange={handleCheckboxChange}
+            />
+            Dairy Free
+          </label>
+          <br />
+          <label>
+            <input
+              type="checkbox"
+              name="glutenFree"
+              checked={checkboxValues.glutenFree}
+              onChange={handleCheckboxChange}
+            />
+            Gluten Free
+          </label>
+          <br />
+          <label>
+            <input
+              type="checkbox"
+              name="vegetarian"
+              checked={checkboxValues.vegetarian}
+              onChange={handleCheckboxChange}
+            />
+            Vegetarian
+          </label>
+          <br />
+          <button type="submit">Submit</button>
+        </form>
     );
   }
 
@@ -204,7 +204,10 @@ function Food() {
     <>
       <h1>Hi! I'm AD, your personal Aiding Dietician!</h1>
       <h2>Select any nutritional content options below and I'll find the best recipes that match what you're looking for!</h2>
-      <MyForm />
+      <div className = "color">
+        <MyForm/>
+        
+      </div>
       <DisplayRecipes recipes = {recipes} />
       <br></br>
       <img src = {food1} className = "picture"/>
