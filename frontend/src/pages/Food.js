@@ -42,13 +42,13 @@ function DisplayOneRecipe({recipeName}){
     if (obj.instructions) {
       setInstructions(obj.instructions);
     }
-    if (obj.df) {
+    if (obj.df && obj.df == true) {
       setDF(obj.df);
     }
-    if (obj.gf) {
+    if (obj.gf && obj.gf == true) {
       setGF(obj.gf);
     }
-    if (obj.veg) {
+    if (obj.veg && obj.veg == true) {
       setVeg(obj.veg);
     }
   });

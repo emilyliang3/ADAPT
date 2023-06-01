@@ -1,12 +1,12 @@
 import React from "react";
 import {Outlet} from "react-router-dom";
 import Navbar from "../Navbar";
+import {useUser} from '../firebaseFunctions.js'
 
 const Layout = () => {
-  let isSignedIn = false;
   return (
     <>
-      <Navbar signedIn = {isSignedIn}/>
+      <Navbar signedIn = {useUser()}/>
       <Outlet />
     </>
   );
