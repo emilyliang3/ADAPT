@@ -54,7 +54,7 @@ function DisplayOneRecipe({recipeName}){
   });
 
   return (
-    <div className="box">
+    <div className="recipe">
       <h3 className="title">Recipe: {name}</h3>
       <h3 className="header">Nutritional Info (per serving):</h3>
       <p className="text">Calories: <b>{calories}</b><br></br>Fat &#40;grams&#41;: <b>{fat}</b>g<br></br>Protein &#40;grams&#41;: <b>{protein}</b>g</p>
