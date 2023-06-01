@@ -5,8 +5,6 @@ import { useState } from "react";
 import { getWorkoutData, searchWorkouts } from '../workoutFunctions';
 
 
-
-
   function DisplayOneWrokout({WorkoutName}){
     const [name, setName] = useState("N/A"); 
     const [goal, setgoal] = useState([]);
@@ -17,10 +15,14 @@ import { getWorkoutData, searchWorkouts } from '../workoutFunctions';
     //Need to modify after sample created
     getWorkoutData(WorkoutName).then((obj) => {
       console.log("ID")
-      console.log(obj.id)
-      if (obj.id) {
-        setName(obj.id);
+      //console.log(name)
+
+      if (obj.name) {
+        setName(obj.name);
+        console.log("setName")
+        console.log(name)
       }
+
       if (obj.goal) {
         setgoal(obj.goal);
       }
@@ -34,7 +36,7 @@ import { getWorkoutData, searchWorkouts } from '../workoutFunctions';
 
     return (
       <>
-        <h3>Workout: {name}</h3>
+        <h3>Workout testing: {name}</h3>
         <h3>Muscles groups:</h3>
         <ol>
         {muscles.map((item, index) => (
@@ -94,7 +96,7 @@ function Workout() {
       searchWorkouts(...options).then((workouts) => {
         if (workouts) {
           setWorkouts(workouts);
-          console.log(workouts);
+          //console.log(workouts);
         }
       });
       setCheckboxValues({
@@ -179,7 +181,6 @@ function Workout() {
       <h1>Hi! I'm AD, your personal Aiding Dietician!</h1>
       <h2>Select any goals options below and I'll find the best workout that match what you're looking for!</h2>
       <MyForm />
-      <div>{workouts}</div>
       <DisplayWorkouts workouts = {workouts} />
       <br></br>
       
@@ -188,6 +189,6 @@ function Workout() {
   );
 }
 
-export default Workout;
 
 
+//this is git testing line

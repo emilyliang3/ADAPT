@@ -8,6 +8,7 @@ export async function getWorkoutData(workouts_id) {
         const workoutDoc = await getDoc(ref);
         if (workoutDoc.exists()) {
             const workoutData = {
+                name: workoutDoc.data()["name"],
                 goal: workoutDoc.data()["goal"],
                 muscles: workoutDoc.data()["muscles"],
                 Instructions: workoutDoc.data()["instruction"],
