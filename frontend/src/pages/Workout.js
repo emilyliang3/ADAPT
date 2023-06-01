@@ -34,12 +34,13 @@ import { getWorkoutData, searchWorkouts } from '../workoutFunctions';
       <div className = "box">
         <h3 className = "title">{name}</h3>
         <h3 className = "header">Muscles groups:</h3>
-        <ol>
+        <ul className = "table">
         {muscles.map((item, index) => (
-          <li key={index} className = "tag">{item}</li>
+          <li key={index} className = "tag2">{item}</li>
           
         ))}
-        </ol> 
+        </ul>
+        <br></br> 
         <a href={Instructions}>Click here for instructions and full workout</a>
       </div>
     );
