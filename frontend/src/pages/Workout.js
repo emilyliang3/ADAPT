@@ -169,7 +169,10 @@ function Workout() {
     <div>
       <h1>Hi! I'm AD, your personal Aiding Dietician!</h1>
       <h2>Select any goals options below and I'll find the best workout that match what you're looking for!</h2>
-      <MyForm />
+      <div className = "color">
+        <MyForm/>
+      </div>
+        
       <DisplayWorkouts workouts = {workouts} />
       <br></br>
       <img src = {workout1} className = "picture"/>
