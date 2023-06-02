@@ -86,20 +86,8 @@ export async function searchWorkouts(lowerbody, upperbody, cardio, core, glutes)
             console.log(error);
         }
     }
-<<<<<<<<< Temporary merge branch 1
     const allLists = [lowerbodylist, upperbodylist, cardiolist, corelist, gluteslist];
-    let filteredLists = allLists.filter(array => array.length > 0);
-    if (!filteredLists) {
-        return [];
-    }
-    let commonRecipes = filteredLists[0];
-    filteredLists.slice(1).forEach(array => {
-        commonRecipes = commonRecipes.filter(value => array.includes(value));
-    });
-    console.log(commonRecipes);
-    return commonRecipes;
-=========
-    const allLists = [lowerbodylist, upperbodylist, fullbodylist, cardiolist, corelist, gluteslist];
+   
     //let filteredLists = allLists.filter(array => array.length > 0);
     //if (!filteredLists) {
     //    return [];
@@ -119,5 +107,5 @@ export async function searchWorkouts(lowerbody, upperbody, cardio, core, glutes)
     //console.log(uniqueValues)
     return uniqueValues;
     //return filteredLists;
->>>>>>>>> Temporary merge branch 2
+
 }
