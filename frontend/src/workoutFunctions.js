@@ -8,6 +8,7 @@ export async function getWorkoutData(workouts_id) {
         const workoutDoc = await getDoc(ref);
         if (workoutDoc.exists()) {
             const workoutData = {
+                name: workoutDoc.data()["name"],
                 goal: workoutDoc.data()["goal"],
                 muscles: workoutDoc.data()["muscles"],
                 Instructions: workoutDoc.data()["instruction"],
@@ -66,26 +67,26 @@ export async function searchWorkouts(lowerbody, upperbody, cardio, core, glutes)
     
     if (cardio) {
         try {
-            cardiolist = await getQueryWorkoutsList("goal", "==", "cardio");
+            cardiolist = await getQueryWorkoutsList("goal", "==", "Cardio");
         } catch(error) {
             console.log(error);
         }
     }
     if (core) {
         try {
-            corelist = await getQueryWorkoutsList("goal", "==", "core");
+            corelist = await getQueryWorkoutsList("goal", "==", "Core");
         } catch(error) {
             console.log(error);
         }
     }
     if (glutes) {
         try {
-            gluteslist = await getQueryWorkoutsList("goal", "==", "glutes");
+            gluteslist = await getQueryWorkoutsList("goal", "==", "Glutes");
         } catch(error) {
             console.log(error);
         }
     }
-    const allLists = [lowerbodylist, upperbodylist, cardiolist, corelist, gluteslist];
+    const allLists = [lowerbodylist, upperbodylist, fullbodylist, cardiolist, corelist, gluteslist];
     let filteredLists = allLists.filter(array => array.length > 0);
     if (!filteredLists) {
         return [];
@@ -97,4 +98,3 @@ export async function searchWorkouts(lowerbody, upperbody, cardio, core, glutes)
     console.log(commonRecipes);
     return commonRecipes;
 }
-
