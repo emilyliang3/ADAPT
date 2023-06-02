@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { firebaseConfig } from './config.js'
 import { initializeApp } from 'firebase/app';
 import { getFirestore, doc, setDoc } from 'firebase/firestore';
-import { getAuth, createUserWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, onAuthStateChanged } from 'firebase/auth';
+import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, onAuthStateChanged } from 'firebase/auth';
 
 const app = initializeApp(firebaseConfig);
 export const db = getFirestore(app);
@@ -34,6 +34,19 @@ const signUpWithEmail = (email, password) => {
     })
 };
 
+const signInWithEmail = (email, password) => {
+    signInWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        
+        console.log('User signed in:', userCredential.user);
+      })
+      .catch((error) => {
+        
+        console.log('Sign-in error:', error);
+      });
+  };
+  
+
 const signInWithGoogle = () => {
     signInWithPopup(auth, googleProvider)
     .then((userCredential) => {
@@ -45,4 +58,4 @@ const signInWithGoogle = () => {
 
 
 
-export { signUpWithEmail, signInWithGoogle, useUser };
+export { signUpWithEmail,signInWithEmail, signInWithGoogle, useUser };
