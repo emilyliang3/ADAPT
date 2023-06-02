@@ -1,0 +1,34 @@
+.tag {
+    display: inline-block;
+    border: 2px solid black;
+    border-radius: 50%;
+    padding: 5px;
+    margin-right: 10px;
+    font-size: 1.3em;
+    background-color: #C5DBF1;
+}
+
+.tag2 {
+    display: inline-block;
+    border: 2px solid black;
+    border-radius: 50%;
+    padding: 5px;
+    margin-right: 10px;
+    font-size: 1.3em;
+    background-color: #C5DBF1;
+}
+
+.header {
+    color: #0B355F;
+    font-size: 1.4em;
+}
+
+.title {
+    color: #0B355F;
+    font-size: 1.5em;
+    text-decoration: underline;
+}
+
+.text {
+    font-size: 1.35em;
+}
