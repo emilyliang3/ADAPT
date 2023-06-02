@@ -21,7 +21,7 @@ export default function LoginButtons(){
           setWelcomeMessage("You are signed in! You can now navigate to User Info, Food, or Workout.");
       }
       else {
-          setWelcomeMessage("Warning: You are not signed in! Sign in to get access to personalized results and the User Info page.");
+          setWelcomeMessage("Warning: You are not signed in! Sign in to get access to the other pages.");
       }
     }, [user]);
 
