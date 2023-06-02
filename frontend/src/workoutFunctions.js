@@ -11,7 +11,7 @@ export async function getWorkoutData(workouts_id) {
                 name: workoutDoc.data()["name"],
                 goal: workoutDoc.data()["goal"],
                 muscles: workoutDoc.data()["muscles"],
-                Instructions: workoutDoc.data()["instruction"],
+                Instructions: workoutDoc.data()["instructions"],
             };
             return workoutData;
         }
