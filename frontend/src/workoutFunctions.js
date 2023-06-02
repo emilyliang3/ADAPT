@@ -11,7 +11,7 @@ export async function getWorkoutData(workouts_id) {
                 name: workoutDoc.data()["name"],
                 goal: workoutDoc.data()["goal"],
                 muscles: workoutDoc.data()["muscles"],
-                Instructions: workoutDoc.data()["instruction"],
+                Instructions: workoutDoc.data()["instructions"],
             };
             return workoutData;
         }
@@ -87,6 +87,13 @@ export async function searchWorkouts(lowerbody, upperbody, cardio, core, glutes)
         }
     }
     const allLists = [lowerbodylist, upperbodylist, cardiolist, corelist, gluteslist];
+   
+    //let filteredLists = allLists.filter(array => array.length > 0);
+    //if (!filteredLists) {
+    //    return [];
+    //}
+
+    // Flatten the array and create a new Set to get unique values
     const uniqueValues = [...new Set(allLists.flat())];
 
     //let commonRecipes = filteredLists[0];
@@ -99,5 +106,6 @@ export async function searchWorkouts(lowerbody, upperbody, cardio, core, glutes)
     //console.log("unique")
     //console.log(uniqueValues)
     return uniqueValues;
-    
+    //return filteredLists;
+
 }

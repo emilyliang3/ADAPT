@@ -23,7 +23,7 @@ export default function UserInfo() {
         }
       });
       getUserField(user, "weight").then((weight) => {
-        if (weight) {
+        if (weight && weight > 0) {
           setWeight(weight);
         } else {
           setWeight("not provided");
@@ -47,13 +47,21 @@ export default function UserInfo() {
   }, [user]);
 
   function changeWeight(weight) {
-    setWeight(weight);
-    updateUserField(user, "weight", weight);
+    if (weight >= 85) {
+      setWeight(weight);
+      updateUserField(user, "weight", weight);
+    } else {
+      console.log("Weight must be 85 or greater.");
+    }
   }
 
   function changeHeight(height) {
-    setHeight(height);
-    updateUserField(user, "height", height);
+    if (height >= 1 && height <= 88) {
+      setHeight(height);
+      updateUserField(user, "height", height);
+    } else {
+      console.log("Height must be greater than 0.");
+    }
   }
 
   function changeName(name) {
@@ -62,19 +70,27 @@ export default function UserInfo() {
   }
 
   function changeBirthday(birthday) {
-    setBirthday(birthday);
-    updateUserField(user, "birthday", birthday);
-  }
+    const regex = /^\d+$/;
 
+    if (regex.test(birthday)) {
+      setBirthday(birthday);
+      updateUserField(user, "birthday", birthday);
+    } else {
+      console.log("Invalid birthday format. Please enter numbers only.");
+    }
+  }
+  
   return (
     <div className = "color1">
       
       <h1 className = "font-heading" >Hi {name}!</h1>
       <h2>Your Information:</h2>
-      <div className="box">
-        <h3 className="header">Weight (lb): <div className="black">{weight}</div></h3>
-        <h3 className="header">Height (inches): <div className="black">{height}</div></h3>
-        <h3 className="header">Birthday: <div className="black">{birthday}</div></h3>
+      <div className = "color">
+        <div className="box">
+          <h3 className="header">Weight (lb): <div className="black">{weight}</div></h3>
+          <h3 className="header">Height (inches): <div className="black">{height}</div></h3>
+          <h3 className="header">Birthday: <div className="black">{birthday}</div></h3>
+        </div>
       </div>
 
       <br></br>
@@ -87,10 +103,12 @@ export default function UserInfo() {
         <MyForm question="Birthday (MM/DD/YYYY): " changeValue={changeBirthday} type="text"/>
       </div>
       <br></br>
-      <img src = {workout4} className = "picture-dimension picture-shift1"/>
-      <img src = {workout5} className = "picture-dimension picture-shift2"/>
-      <img src = {workout6} className = "picture-dimension picture-shift3"/>
-      <img src = {workout7} className = "picture-dimension picture-shift4"/>
+      <div className = "space"></div>    
+        <img src = {workout4} className = "picture"/>
+        <img src = {workout5} className = "picture"/>
+        <img src = {workout6} className = "picture"/>
+        <img src = {workout7} className = "picture"/>
+
     
     </div>
 
