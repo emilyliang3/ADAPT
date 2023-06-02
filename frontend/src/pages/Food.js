@@ -2,9 +2,11 @@ import food1 from '../images/food1.jpg';
 import food2 from '../images/food2.jpg';
 import food3 from '../images/food3.jpg';
 import {useState} from 'react';
-import { getRecipeData, searchRecipes } from '../recipeFunctions';
+import { getRecipeData, searchRecipes, customRecipesByBMI } from '../recipeFunctions';
 import '../index.css';
 import './food.css';
+import { useUser } from '../firebaseFunctions';
+
 
 function DisplayOneRecipe({recipeName}){
   const [name, setName] = useState("N/A");
@@ -104,6 +106,7 @@ function Food() {
     custom: false,
   });
   const [recipes, setRecipes] = useState([]);
+  const user = useUser();
 
   function MyForm() {
     const handleCheckboxChange = (event) => {
@@ -116,6 +119,9 @@ function Food() {
 
     const handleSubmit = (event) => {
       event.preventDefault();
+      if(user){
+        customRecipesByBMI(user);
+      }
       setRecipes([]);
       // Handle form submission or perform any desired actions with checkboxValues
       const options = Object.values(checkboxValues);
