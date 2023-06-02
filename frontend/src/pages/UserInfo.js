@@ -71,10 +71,12 @@ export default function UserInfo() {
       
       <h1 className = "font-heading" >Hi {name}!</h1>
       <h2>Your Information:</h2>
-      <div className="box">
-        <h3 className="header">Weight (lb): <div className="black">{weight}</div></h3>
-        <h3 className="header">Height (inches): <div className="black">{height}</div></h3>
-        <h3 className="header">Birthday: <div className="black">{birthday}</div></h3>
+      <div className = "color">
+        <div className="box">
+          <h3 className="header">Weight (lb): <div className="black">{weight}</div></h3>
+          <h3 className="header">Height (inches): <div className="black">{height}</div></h3>
+          <h3 className="header">Birthday: <div className="black">{birthday}</div></h3>
+        </div>
       </div>
 
       <br></br>
@@ -87,10 +89,12 @@ export default function UserInfo() {
         <MyForm question="Birthday (MM/DD/YYYY): " changeValue={changeBirthday} type="text"/>
       </div>
       <br></br>
-      <img src = {workout4} className = "picture-dimension picture-shift1"/>
-      <img src = {workout5} className = "picture-dimension picture-shift2"/>
-      <img src = {workout6} className = "picture-dimension picture-shift3"/>
-      <img src = {workout7} className = "picture-dimension picture-shift4"/>
+      <div className = "space"></div>    
+        <img src = {workout4} className = "picture"/>
+        <img src = {workout5} className = "picture"/>
+        <img src = {workout6} className = "picture"/>
+        <img src = {workout7} className = "picture"/>
+
     
     </div>
 
