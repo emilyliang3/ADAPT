@@ -1,10 +1,5 @@
-import food1 from '../images/food1.jpg';
-import food2 from '../images/food2.jpg';
-import food3 from '../images/food3.jpg';
 import {useState} from 'react';
 import { getRecipeData, searchRecipes, customRecipesByBMI } from '../recipeFunctions';
-import '../index.css';
-import './food.css';
 import { useUser } from '../firebaseFunctions';
 
 
@@ -230,9 +225,9 @@ function Food() {
       </div>
       <DisplayRecipes recipes = {recipes} />
       <br></br>
-      <img src = {food1} className = "picture"/>
-      <img src = {food2} className = "picture"/>
-      <img src = {food3} className = "picture"/>
+      <img src = "/food1.jpg" className = "picture"/>
+      <img src = "/food2.jpg" className = "picture"/>
+      <img src = "/food3.jpg" className = "picture"/>
     </>
 
   );
