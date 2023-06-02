@@ -19,7 +19,7 @@ export default function UserInfo() {
         }
       });
       getUserField(user, "weight").then((weight) => {
-        if (weight && weight > 85) {
+        if (weight && weight > 0) {
           setWeight(weight);
         } else {
           setWeight("not provided");
@@ -75,7 +75,7 @@ export default function UserInfo() {
       console.log("Invalid birthday format. Please enter numbers only.");
     }
   }
-
+  
   return (
     <>
       <h1 className = "font-heading" >Hi {name}!</h1>
