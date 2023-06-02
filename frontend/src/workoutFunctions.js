@@ -99,5 +99,5 @@ export async function searchWorkouts(lowerbody, upperbody, cardio, core, glutes)
     //console.log("unique")
     //console.log(uniqueValues)
     return uniqueValues;
+    
 }
-

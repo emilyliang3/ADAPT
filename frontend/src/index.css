@@ -38,6 +38,9 @@ h2 {
   margin-top: 20px;
 }
 
+.bigspace {
+  margin-top: 40px;
+}
 
 .box {
   display: inline-block;
@@ -58,4 +61,8 @@ form button {
   text-align: center;
   font-size: 1.35em;
   margin-top: 10px;
+}
+
+.blue {
+  color: #0B355F;
 }
