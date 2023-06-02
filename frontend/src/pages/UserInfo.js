@@ -23,7 +23,7 @@ export default function UserInfo() {
         }
       });
       getUserField(user, "weight").then((weight) => {
-        if (weight && weight > 85) {
+        if (weight && weight > 0) {
           setWeight(weight);
         } else {
           setWeight("not provided");
@@ -46,26 +46,40 @@ export default function UserInfo() {
     }
   }, [user]);
 
-  function changeWeight(weight) {
-    setWeight(weight);
-    updateUserField(user, "weight", weight);
+  function handleChangeWeight(weight) {
+    if (weight >= 85) {
+      setWeight(weight);
+      updateUserField(user, "weight", weight);
+    } else {
+      console.log("Weight must be 85 or greater.");
+    }
   }
 
-  function changeHeight(height) {
-    setHeight(height);
-    updateUserField(user, "height", height);
+  function handleChangeHeight(height) {
+    if (height >= 1 && height <= 88) {
+      setHeight(height);
+      updateUserField(user, "height", height);
+    } else {
+      console.log("Height must be greater than 0.");
+    }
   }
 
-  function changeName(name) {
+  function handleChangeName(name) {
     setName(name);
     updateUserField(user, "name", name);
   }
 
-  function changeBirthday(birthday) {
-    setBirthday(birthday);
-    updateUserField(user, "birthday", birthday);
-  }
+  function handleChangeBirthday(birthday) {
+    const regex = /^\d+$/;
 
+    if (regex.test(birthday)) {
+      setBirthday(birthday);
+      updateUserField(user, "birthday", birthday);
+    } else {
+      console.log("Invalid birthday format. Please enter numbers only.");
+    }
+  }
+  
   return (
     <div className = "color1">
       
