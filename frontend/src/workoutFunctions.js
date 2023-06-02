@@ -39,10 +39,10 @@ export async function getQueryWorkoutsList(field, operator, value) {
     return workoutslist;
 }
 
-export async function searchWorkouts(lowerbody, upperbody, fullbody, cardio, core, glutes) {
+export async function searchWorkouts(lowerbody, upperbody, cardio, core, glutes) {
     let lowerbodylist = [];
     let upperbodylist = [];
-    let fullbodylist = [];
+    //let fullbodylist = [];
     let cardiolist = [];
     let corelist = [];
     let gluteslist = [];
@@ -63,13 +63,7 @@ export async function searchWorkouts(lowerbody, upperbody, fullbody, cardio, cor
             console.log(error);
         }
     }
-    if (fullbody) {
-        try {
-            fullbodylist = await getQueryWorkoutsList("goal", "==", "Full Body");
-        } catch(error) {
-            console.log(error);
-        }
-    }
+    
     if (cardio) {
         try {
             cardiolist = await getQueryWorkoutsList("goal", "==", "cardio");
@@ -91,7 +85,7 @@ export async function searchWorkouts(lowerbody, upperbody, fullbody, cardio, cor
             console.log(error);
         }
     }
-    const allLists = [lowerbodylist, upperbodylist, fullbodylist, cardiolist, corelist, gluteslist];
+    const allLists = [lowerbodylist, upperbodylist, cardiolist, corelist, gluteslist];
     let filteredLists = allLists.filter(array => array.length > 0);
     if (!filteredLists) {
         return [];

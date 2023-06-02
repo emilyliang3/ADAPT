@@ -68,7 +68,7 @@ function Workout() {
   const [checkboxValues, setCheckboxValues] = useState({
     LowerBody: false,
     UpperBody: false,
-    FullBody: false,
+
     Cardio: false,
     Core: false,
     Glutes: false,
@@ -100,7 +100,7 @@ function Workout() {
       setCheckboxValues({
         LowerBody: false,
         UpperBody: false,
-        FullBody: false,
+       
         Cardio: false,
         Core: false,
         Glutes: false,
@@ -127,16 +127,6 @@ function Workout() {
             onChange={handleCheckboxChange}
           />
           UpperBody
-        </label>
-        <br />
-        <label>
-          <input
-            type="checkbox"
-            name="FullBody"
-            checked={checkboxValues.FullBody}
-            onChange={handleCheckboxChange}
-          />
-          FullBody
         </label>
         <br />
         <label>
