@@ -2,8 +2,6 @@ import { signUpWithEmail, signInWithGoogle,signInWithEmail, auth, useUser } from
 import { signOut } from "firebase/auth";
 import { useState } from "react";
 import React, { useEffect } from 'react';
-import '../index.css';
-import './login.css';
 
 export default function LoginButtons(){
     const [email, setemail] = useState("");

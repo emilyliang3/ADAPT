@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 import { updateUserField, getUserField } from '../userFunctions.js';
 import { useUser } from '../firebaseFunctions';
 import MyForm from '../question-textbox';
-import './userinfo.css';
 
 export default function UserInfo() {
   const user = useUser();

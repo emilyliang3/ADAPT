@@ -1,7 +1,5 @@
 import {useState} from 'react';
 import { getRecipeData, searchRecipes, customRecipesByBMI } from '../recipeFunctions';
-import '../index.css';
-import './food.css';
 import { useUser } from '../firebaseFunctions';
 
 
