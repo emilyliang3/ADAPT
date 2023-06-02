@@ -34,33 +34,6 @@ h2 {
   
 }
 
-.picture-dimension {
-  position:absolute;
-  width:675px;
-  height:470px;
-}
-
-.picture-shift1 {
-  float:left;
-  top:119px;
-  left:0px;
-}
-
-.picture-shift2 {
-  float:left;
-  top:119px;
-  right:0px;
-}
-
-.picture-shift3 {
-  left:0px;
-}
-
-.picture-shift4 {
-  right:0px;
-}
-
-
 .space {
   margin-top: 20px;
 }
