@@ -1,10 +1,11 @@
 import { doc, getDoc, getDocs, collection, where, query } from 'firebase/firestore';
 import { db } from './firebaseFunctions.js';
+import { calculateUserBMI } from './userFunctions.js';
 
 // recipe constant values
-const PROTEIN_MIN = 5;
-const FAT_MAX = 5;
-const CAL_MAX = 600;
+let PROTEIN_MIN = 5;
+let FAT_MAX = 5;
+let CAL_MAX = 600;
 
 export async function getRecipeData(recipe_id) {
     try {
@@ -44,7 +45,6 @@ async function getQueryRecipesList(field, operator, value) {
     } catch (error) {
         console.error(error.message);
     }
-    //console.log
     return recipeslist;
 }
 
@@ -107,6 +107,22 @@ export async function searchRecipes(protein, fat, cal, df, gf, veg) {
     filteredLists.slice(1).forEach(array => {
         commonRecipes = commonRecipes.filter(value => array.includes(value));
     });
-    console.log(commonRecipes);
     return commonRecipes;
 }
+
+
+export async function customRecipesByBMI(user) {
+    const bmi = await calculateUserBMI(user);
+
+
+    if (bmi >= 25) {
+        PROTEIN_MIN = 20;
+        FAT_MAX = 11;
+        CAL_MAX = 301;
+    }
+    else if (bmi <= 18.5) {
+        PROTEIN_MIN = 20;
+        FAT_MAX = 11;
+        CAL_MAX = 1000;
+    }
+  }
