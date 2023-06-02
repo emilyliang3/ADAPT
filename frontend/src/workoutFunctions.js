@@ -87,15 +87,17 @@ export async function searchWorkouts(lowerbody, upperbody, cardio, core, glutes)
         }
     }
     const allLists = [lowerbodylist, upperbodylist, cardiolist, corelist, gluteslist];
-    let filteredLists = allLists.filter(array => array.length > 0);
-    if (!filteredLists) {
-        return [];
-    }
-    let commonRecipes = filteredLists[0];
-    filteredLists.slice(1).forEach(array => {
-        commonRecipes = commonRecipes.filter(value => array.includes(value));
-    });
-    console.log(commonRecipes);
-    return commonRecipes;
+    const uniqueValues = [...new Set(allLists.flat())];
+
+    //let commonRecipes = filteredLists[0];
+    //filteredLists.slice(1).forEach(array => {
+    //    commonRecipes = commonRecipes.filter(value => array.includes(value));
+    //});
+    //console.log("In filter")
+    //console.log(commonRecipes);
+    //console.log(filteredLists);
+    //console.log("unique")
+    //console.log(uniqueValues)
+    return uniqueValues;
 }
 
