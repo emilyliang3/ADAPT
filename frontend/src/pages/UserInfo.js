@@ -3,6 +3,10 @@ import { updateUserField, getUserField } from '../userFunctions.js';
 import { useUser } from '../firebaseFunctions';
 import MyForm from '../question-textbox';
 import './userinfo.css';
+import workout4 from '../images/workout4.jpg';
+import workout5 from '../images/workout5.jpg';
+import workout6 from '../images/workout6.jpg';
+import workout7 from '../images/workout7.jpg';
 
 export default function UserInfo() {
   const user = useUser();
@@ -63,23 +67,32 @@ export default function UserInfo() {
   }
 
   return (
-    <>
+    <div className = "color1">
+      
       <h1 className = "font-heading" >Hi {name}!</h1>
       <h2>Your Information:</h2>
       <div className="box">
-      <h3 className="header">Weight (lb): <div className="black">{weight}</div></h3>
-      <h3 className="header">Height (inches): <div className="black">{height}</div></h3>
-      <h3 className="header">Birthday: <div className="black">{birthday}</div></h3>
+        <h3 className="header">Weight (lb): <div className="black">{weight}</div></h3>
+        <h3 className="header">Height (inches): <div className="black">{height}</div></h3>
+        <h3 className="header">Birthday: <div className="black">{birthday}</div></h3>
       </div>
+
       <br></br>
       <h2>Update Your Information:</h2>
+
       <div className="box">
-      <MyForm question="Name: " changeValue={changeName} type="text" />
-      <MyForm question="Weight (lb): " changeValue={changeWeight} type="number"/>
-      <MyForm question="Height (inches): " changeValue={changeHeight} type="number"/>
-      <MyForm question="Birthday (MM/DD/YYYY): " changeValue={changeBirthday} type="text"/>
+        <MyForm question="Name: " changeValue={changeName} type="text" />
+        <MyForm question="Weight (lb): " changeValue={changeWeight} type="number"/>
+        <MyForm question="Height (inches): " changeValue={changeHeight} type="number"/>
+        <MyForm question="Birthday (MM/DD/YYYY): " changeValue={changeBirthday} type="text"/>
       </div>
-    </>
+      <br></br>
+      <img src = {workout4} className = "picture-dimension picture-shift1"/>
+      <img src = {workout5} className = "picture-dimension picture-shift2"/>
+      <img src = {workout6} className = "picture-dimension picture-shift3"/>
+      <img src = {workout7} className = "picture-dimension picture-shift4"/>
+    
+    </div>
 
   );
 }
