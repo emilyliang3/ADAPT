@@ -19,7 +19,7 @@ export default function UserInfo() {
         }
       });
       getUserField(user, "weight").then((weight) => {
-        if (weight && weight > 0) {
+        if (weight && weight > 85) {
           setWeight(weight);
         } else {
           setWeight("not provided");
