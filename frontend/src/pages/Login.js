@@ -39,7 +39,6 @@ export default function LoginButtons(){
       <h3 className="message">Welcome to ADAPT!<br></br>Visit the Food page to find recipes tailored to specific nutritional goals and/or needs.<br></br>Vist the Workout page to search for workouts that align with your fitness goals. </h3>
       <h3 className="blue">{welcomeMessage}</h3>
 
-<<<<<<< HEAD
       <h2>Existing users:</h2> 
       <input className="field" placeholder="Email..."
       onChange = {(e) => setemail(e.target.value)}
@@ -51,9 +50,8 @@ export default function LoginButtons(){
       <h3 className="or">or</h3>
       <button className="google" onClick={() => signInWithGoogle()}> Sign In with Google</button>
         <div className="bigspace"></div>
-=======
+
       <div className = "color">
->>>>>>> main
 
         <div className = "box2">
           <h2>Existing users:</h2> 
