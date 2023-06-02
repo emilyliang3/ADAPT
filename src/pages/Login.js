@@ -1,7 +1,3 @@
-import gym1 from '../images/gym1.jpg';
-import gym2 from '../images/gym2.jpg';
-import gym3 from '../images/gym3.jpg';
-
 import { signUpWithEmail, signInWithGoogle,signInWithEmail, auth, useUser } from '../firebaseFunctions';
 import { signOut } from "firebase/auth";
 import { useState } from "react";
@@ -79,9 +75,9 @@ export default function LoginButtons(){
       <br></br>
       <br></br>
       
-      <img src = {gym1} className = "picture"/>
-      <img src = {gym2} className = "picture"/>
-      <img src = {gym3} className = "picture"/>
+      <img src = "/gym1.jpg" className = "picture"/>
+      <img src = "/gym2.jpg" className = "picture"/>
+      <img src = "/gym3.jpg" className = "picture"/>
       
     </div>
     );

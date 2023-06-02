@@ -1,6 +1,3 @@
-import workout1 from '../images/workout1.jpg';
-import workout2 from '../images/workout2.jpg';
-import workout3 from '../images/workout3.jpg';
 import { useState } from "react";
 import { getWorkoutData, searchWorkouts } from '../workoutFunctions';
 
@@ -171,9 +168,9 @@ function Workout() {
         
       <DisplayWorkouts workouts = {workouts} />
       <br></br>
-      <img src = {workout1} className = "picture"/>
-      <img src = {workout2} className = "picture"/>
-      <img src = {workout3} className = "picture"/>
+      <img src = "/workout1.jpg" className = "picture"/>
+      <img src = "/workout2.jpg" className = "picture"/>
+      <img src = "/workout3.jpg" className = "picture"/>
       
     </div>
 

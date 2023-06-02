@@ -3,10 +3,6 @@ import { updateUserField, getUserField } from '../userFunctions.js';
 import { useUser } from '../firebaseFunctions';
 import MyForm from '../question-textbox';
 import './userinfo.css';
-import workout4 from '../images/workout4.jpg';
-import workout5 from '../images/workout5.jpg';
-import workout6 from '../images/workout6.jpg';
-import workout7 from '../images/workout7.jpg';
 
 export default function UserInfo() {
   const user = useUser();
@@ -104,10 +100,10 @@ export default function UserInfo() {
       </div>
       <br></br>
       <div className = "space"></div>    
-        <img src = {workout4} className = "picture"/>
-        <img src = {workout5} className = "picture"/>
-        <img src = {workout6} className = "picture"/>
-        <img src = {workout7} className = "picture"/>
+        <img src = "/workout4.jpg" className = "picture"/>
+        <img src = "/workout5.jpg" className = "picture"/>
+        <img src = "/workout6.jpg" className = "picture"/>
+        <img src = "/workout7.jpg" className = "picture"/>
 
     
     </div>
