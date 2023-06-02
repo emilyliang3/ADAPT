@@ -101,6 +101,7 @@ function Food() {
     dairyFree: false,
     glutenFree: false,
     vegetarian: false,
+    custom: false,
   });
   const [recipes, setRecipes] = useState([]);
 
@@ -130,6 +131,7 @@ function Food() {
         dairyFree: false,
         glutenFree: false,
         vegetarian: false,
+        custom: false,
       });
     };
 
@@ -193,6 +195,16 @@ function Food() {
               onChange={handleCheckboxChange}
             />
             Vegetarian
+          </label>
+          <br />
+          <label>
+            <input
+              type="checkbox"
+              name="custom"
+              checked={checkboxValues.custom}
+              onChange={handleCheckboxChange}
+            />
+            Customize by my BMI
           </label>
           <br />
           <button type="submit">Submit</button>
