@@ -46,7 +46,7 @@ export default function UserInfo() {
     }
   }, [user]);
 
-  function handleChangeWeight(weight) {
+  function changeWeight(weight) {
     if (weight >= 85) {
       setWeight(weight);
       updateUserField(user, "weight", weight);
@@ -55,7 +55,7 @@ export default function UserInfo() {
     }
   }
 
-  function handleChangeHeight(height) {
+  function changeHeight(height) {
     if (height >= 1 && height <= 88) {
       setHeight(height);
       updateUserField(user, "height", height);
@@ -64,12 +64,12 @@ export default function UserInfo() {
     }
   }
 
-  function handleChangeName(name) {
+  function changeName(name) {
     setName(name);
     updateUserField(user, "name", name);
   }
 
-  function handleChangeBirthday(birthday) {
+  function changeBirthday(birthday) {
     const regex = /^\d+$/;
 
     if (regex.test(birthday)) {
