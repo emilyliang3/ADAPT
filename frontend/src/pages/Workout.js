@@ -4,21 +4,17 @@ import workout3 from '../images/workout3.jpg';
 import { useState } from "react";
 import { getWorkoutData, searchWorkouts } from '../workoutFunctions';
 
-
   function DisplayOneWrokout({WorkoutName}){
     const [name, setName] = useState("N/A"); 
     const [goal, setgoal] = useState([]);
     const [muscles, setmuscles] = useState([]);
     const [Instructions, setInstructions] = useState("N/A");
    
-
     //Need to modify after sample created
     getWorkoutData(WorkoutName).then((obj) => {
-
       if (obj.name) {
         setName(obj.name);
       }
-
       if (obj.goal) {
         setgoal(obj.goal);
       }
@@ -117,7 +113,7 @@ function Workout() {
             checked={checkboxValues.LowerBody}
             onChange={handleCheckboxChange}
           />
-          LowerBody
+          Lower Body
         </label>
         <br />
         <label>
@@ -127,7 +123,7 @@ function Workout() {
             checked={checkboxValues.UpperBody}
             onChange={handleCheckboxChange}
           />
-          UpperBody
+          Upper Body
         </label>
         <br />
         <label>
@@ -167,8 +163,8 @@ function Workout() {
 
   return (
     <div>
-      <h1>Hi! I'm AD, your personal Aiding Dietician!</h1>
-      <h2>Select any goals options below and I'll find the best workout that match what you're looking for!</h2>
+      <h1>Hi! I'm APT, your Aiding Personal Trainer!</h1>
+      <h2>Select any goals options below and I'll find the best workouts that match what you're looking for!</h2>
       <div className = "color">
         <MyForm/>
       </div>

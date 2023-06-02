@@ -40,23 +40,23 @@ export default function UserInfo() {
         if (birthday) {
           setBirthday(birthday);
         } else {
-          setHeight("not provided");
+          setBirthday("not provided");
         }
       });
     }
   }, [user]);
 
   function changeWeight(weight) {
-    if (weight >= 85) {
+    if (weight > 0) {
       setWeight(weight);
       updateUserField(user, "weight", weight);
     } else {
-      console.log("Weight must be 85 or greater.");
+      console.log("Weight must be a positive value.");
     }
   }
 
   function changeHeight(height) {
-    if (height >= 1 && height <= 88) {
+    if (height > 0 && height <= 100) {
       setHeight(height);
       updateUserField(user, "height", height);
     } else {
@@ -70,7 +70,7 @@ export default function UserInfo() {
   }
 
   function changeBirthday(birthday) {
-    const regex = /^\d+$/;
+    const regex = /^(0[1-9]|1[0-2])\/(0[1-9]|1\d|2\d|3[01])\/(19|20)\d{2}$/;
 
     if (regex.test(birthday)) {
       setBirthday(birthday);
