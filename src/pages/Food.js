@@ -115,10 +115,10 @@ function Food() {
 
     const handleSubmit = async (event) => {
       event.preventDefault();
-      console.log("handleSubmit");
+
       resetCustomRecipesByBMI();
       if(user && checkboxValues.custom){
-        console.log("custom");
+
         await customRecipesByBMI(user);
       }
       setRecipes([]);
@@ -217,7 +217,6 @@ function Food() {
     );
   }
 
-  //resetCustomRecipesByBMI();
 
   return (
     <>
