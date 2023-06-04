@@ -1,12 +1,12 @@
 # ADAPT
 ## CS35L Project
-### `First, download the files from the repo.`
-### `git clone https://github.com/Rustinante/topo-ordered-commits-test-suite.git`
+### First, download the files from the repo.
+#### `git clone https://github.com/Rustinante/topo-ordered-commits-test-suite.git`
 ## Run:
-### `npm install firebase` 
-### `npm install react-router-dom` 
-### `npm install` 
-### `npm start` 
+#### `npm install firebase` 
+#### `npm install react-router-dom` 
+#### `npm install` 
+#### `npm start` 
 
 # Description
 this is description  
