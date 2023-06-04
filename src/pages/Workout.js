@@ -168,9 +168,9 @@ function Workout() {
         
       <DisplayWorkouts workouts = {workouts} />
       <br></br>
-      <img src = "/workout1.jpg" className = "picture"/>
-      <img src = "/workout2.jpg" className = "picture"/>
-      <img src = "/workout3.jpg" className = "picture"/>
+      <img src = "/workout1.jpg" className = "picture" alt = "People working out"/>
+      <img src = "/workout2.jpg" className = "picture" alt = "People working out"/>
+      <img src = "/workout3.jpg" className = "picture" alt = "People working out"/>
       
     </div>
 

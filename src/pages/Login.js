@@ -73,9 +73,9 @@ export default function LoginButtons(){
       <br></br>
       <br></br>
       
-      <img src = "/gym1.jpg" className = "picture"/>
-      <img src = "/gym2.jpg" className = "picture"/>
-      <img src = "/gym3.jpg" className = "picture"/>
+      <img src = "/gym1.jpg" className = "picture" alt = "People working out"/>
+      <img src = "/gym2.jpg" className = "picture" alt = "People working out"/>
+      <img src = "/gym3.jpg" className = "picture" alt = "People workout out"/>
       
     </div>
     );
