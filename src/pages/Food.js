@@ -1,5 +1,5 @@
 import {useState} from 'react';
-import { getRecipeData, searchRecipes, customRecipesByBMI } from '../recipeFunctions';
+import { getRecipeData, searchRecipes, customRecipesByBMI, resetCustomRecipesByBMI } from '../recipeFunctions';
 import { useUser } from '../firebaseFunctions';
 
 
@@ -113,10 +113,13 @@ function Food() {
       }));
     };
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
       event.preventDefault();
-      if(user){
-        customRecipesByBMI(user);
+
+      resetCustomRecipesByBMI();
+      if(user && checkboxValues.custom){
+
+        await customRecipesByBMI(user);
       }
       setRecipes([]);
       // Handle form submission or perform any desired actions with checkboxValues
@@ -213,6 +216,7 @@ function Food() {
         </form>
     );
   }
+
 
   return (
     <>
