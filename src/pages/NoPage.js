@@ -1,6 +1,6 @@
 function NoPage() {
     return (
-        <h1>this is no page</h1>
+        <h1>This page does not exist currently.</h1>
     );
 }
 

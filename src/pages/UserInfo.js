@@ -99,10 +99,10 @@ export default function UserInfo() {
       </div>
       <br></br>
       <div className = "space"></div>    
-        <img src = "/workout4.jpg" className = "picture"/>
-        <img src = "/workout5.jpg" className = "picture"/>
-        <img src = "/workout6.jpg" className = "picture"/>
-        <img src = "/workout7.jpg" className = "picture"/>
+        <img src = "/workout4.jpg" className = "picture" alt = "People working out"/>
+        <img src = "/workout5.jpg" className = "picture" alt = "People working out"/>
+        <img src = "/workout6.jpg" className = "picture" alt = "People working out"/>
+        <img src = "/workout7.jpg" className = "picture" alt = "People working out"/>
 
     
     </div>
