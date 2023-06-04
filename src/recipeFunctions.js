@@ -126,3 +126,10 @@ export async function customRecipesByBMI(user) {
         CAL_MAX = 1000;
     }
   }
+
+export async function resetCustomRecipesByBMI() {
+    
+    PROTEIN_MIN = 0;
+    FAT_MAX = 1000;
+    CAL_MAX = 1000;
+}
