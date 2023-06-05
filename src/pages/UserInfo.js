@@ -9,7 +9,6 @@ export default function UserInfo() {
   const [weight, setWeight] = useState("");
   const [height, setHeight] = useState("");
   const [birthday, setBirthday] = useState("");
-  const [birthdayError, setBirthdayError] = useState("");
 
   useEffect(() => {
     if (user) {
@@ -65,40 +64,18 @@ export default function UserInfo() {
     updateUserField(user, "name", name);
   }
 
+  
+  function validateBirthday(input) {
+    return /^\d{2}\/\d{2}\/\d{4}$/.test(input);
+  }
+
   function changeBirthday(birthday) {
-    const regex = /^\d+$/;
-
-    if (!regex.test(birthday)) {
-      setBirthdayError("Invalid birthday format. Please enter numbers only.");
-      return;
+    if (validateBirthday(birthday)) {
+      setBirthday(birthday);
+      updateUserField(user, "birthday", birthday);
+    } else {
+      console.log("Please enter the birthday in the format MM/DD/YYYY.");
     }
-
-    const [month, day, year] = birthday.split("/");
-
-    if (
-      isNaN(parseInt(month)) ||
-      isNaN(parseInt(day)) ||
-      isNaN(parseInt(year))
-    ) {
-      setBirthdayError("Invalid birthday format. Please enter numbers only.");
-      return;
-    }
-
-    if (
-      parseInt(month) < 1 ||
-      parseInt(month) > 12 ||
-      parseInt(day) < 1 ||
-      parseInt(day) > 31 ||
-      parseInt(year) < 1900 ||
-      parseInt(year) > new Date().getFullYear()
-    ) {
-      setBirthdayError("Invalid birthday format. Please enter a valid date.");
-      return;
-    }
-
-    setBirthday(birthday);
-    setBirthdayError("");
-    // Your existing code for updating birthday goes here
   }
 
   return (
@@ -121,7 +98,7 @@ export default function UserInfo() {
         <MyForm question="Name: " changeValue={changeName} type="text" />
         <MyForm question="Weight (lb): " changeValue={changeWeight} type="number"/>
         <MyForm question="Height (inches): " changeValue={changeHeight} type="number"/>
-         <MyForm question="Birthday (MM/DD/YYYY): " changeValue={changeBirthday} type="text" errorMessage={birthdayError} />
+         <MyForm question="Birthday (MM/DD/YYYY): " changeValue={changeBirthday} type="text" />
       </div>
       <br></br>
       <div className = "space"></div>    
