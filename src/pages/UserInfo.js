@@ -9,6 +9,8 @@ export default function UserInfo() {
   const [weight, setWeight] = useState("");
   const [height, setHeight] = useState("");
   const [birthday, setBirthday] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
+
 
   useEffect(() => {
     if (user) {
@@ -73,8 +75,9 @@ export default function UserInfo() {
     if (validateBirthday(birthday)) {
       setBirthday(birthday);
       updateUserField(user, "birthday", birthday);
+      setErrorMessage("");
     } else {
-      console.log("Please enter the birthday in the format MM/DD/YYYY.");
+      setErrorMessage("Please enter the birthday in the format MM/DD/YYYY.");
     }
   }
 
@@ -100,6 +103,11 @@ export default function UserInfo() {
         <MyForm question="Height (inches): " changeValue={changeHeight} type="number"/>
          <MyForm question="Birthday (MM/DD/YYYY): " changeValue={changeBirthday} type="text" />
       </div>
+
+      {errorMessage && (
+        <div className="error-message">{errorMessage}</div>
+      )}
+
       <br></br>
       <div className = "space"></div>    
         <img src = "/workout4.jpg" className = "picture" alt = "People working out"/>
