@@ -9,6 +9,7 @@ export default function UserInfo() {
   const [weight, setWeight] = useState("");
   const [height, setHeight] = useState("");
   const [birthday, setBirthday] = useState("");
+  const [birthdayError, setBirthdayError] = useState("");
 
   useEffect(() => {
     if (user) {
@@ -120,7 +121,7 @@ export default function UserInfo() {
         <MyForm question="Name: " changeValue={changeName} type="text" />
         <MyForm question="Weight (lb): " changeValue={changeWeight} type="number"/>
         <MyForm question="Height (inches): " changeValue={changeHeight} type="number"/>
-        <MyForm question="Birthday (MM/DD/YYYY): " changeValue={changeBirthday} type="text"/>
+         <MyForm question="Birthday (MM/DD/YYYY): " changeValue={changeBirthday} type="text" errorMessage={birthdayError} />
       </div>
       <br></br>
       <div className = "space"></div>    
