@@ -65,16 +65,41 @@ export default function UserInfo() {
   }
 
   function changeBirthday(birthday) {
-    const regex = /^(0[1-9]|1[0-2])\/(0[1-9]|1\d|2\d|3[01])\/(19|20)\d{2}$/;
+    const regex = /^\d+$/;
 
-    if (regex.test(birthday)) {
-      setBirthday(birthday);
-      updateUserField(user, "birthday", birthday);
-    } else {
-      console.log("Invalid birthday format. Please enter numbers only.");
+    if (!regex.test(birthday)) {
+      setBirthdayError("Invalid birthday format. Please enter numbers only.");
+      return;
     }
+
+    const [month, day, year] = birthday.split("/");
+
+    if (
+      isNaN(parseInt(month)) ||
+      isNaN(parseInt(day)) ||
+      isNaN(parseInt(year))
+    ) {
+      setBirthdayError("Invalid birthday format. Please enter numbers only.");
+      return;
+    }
+
+    if (
+      parseInt(month) < 1 ||
+      parseInt(month) > 12 ||
+      parseInt(day) < 1 ||
+      parseInt(day) > 31 ||
+      parseInt(year) < 1900 ||
+      parseInt(year) > new Date().getFullYear()
+    ) {
+      setBirthdayError("Invalid birthday format. Please enter a valid date.");
+      return;
+    }
+
+    setBirthday(birthday);
+    setBirthdayError("");
+    // Your existing code for updating birthday goes here
   }
-  
+
   return (
     <div className = "color1">
       
