@@ -50,7 +50,7 @@ export default function LoginButtons() {
         <div className="box2">
           <h2>Existing users:</h2>
           <input className="field" placeholder="Email..." onChange={(e) => setExistingEmail(e.target.value)} value={existingEmail} />
-          <input className="field" placeholder="Password..." onChange={(e) => setExistingPassword(e.target.value)} value={existingPassword} />
+          <input className="field" placeholder="Password..." type="password" onChange={(e) => setExistingPassword(e.target.value)} value={existingPassword} />
           <button className="sign" onClick={handleSignIn}>Sign In</button>
           <h3 className="or">or</h3>
           <button className="google" onClick={signInWithGoogle}>Sign In with Google</button>
