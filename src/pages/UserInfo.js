@@ -44,13 +44,15 @@ export default function UserInfo() {
   }, [user]);
 
   function changeWeight(weight) {
-    if (weight > 0) {
-      setWeight(weight);
+    if (/^\d+$/.test(weight) && weight > 0 && weight <= 1000000) {
+      setHeight(weight);
       updateUserField(user, "weight", weight);
+      setErrorMessage("");
     } else {
-      console.log("Weight must be a positive value.");
+      setErrorMessage("Please enter a valid number.");
     }
   }
+
 // added 
 function changeHeight(height) {
   if (/^\d+$/.test(height) && height > 0 && height <= 100) {
@@ -58,13 +60,12 @@ function changeHeight(height) {
     updateUserField(user, "height", height);
     setErrorMessage("");
   } else {
-    setErrorMessage("Please enter a valid height as a positive number not exceeding 100.");
+    setErrorMessage("Please enter a valid height");
   }
 }
 //added
-
 function changeName(name) {
-  if (/^[a-zA-Z]+$/.test(name)) {
+  if (/^[a-zA-Z\s]+$/.test(name)) {
     setName(name);
     updateUserField(user, "name", name);
     setErrorMessage("");
