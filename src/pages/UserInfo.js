@@ -45,7 +45,7 @@ export default function UserInfo() {
 
   function changeWeight(weight) {
     if (/^\d+$/.test(weight) && weight > 0 && weight <= 1000000) {
-      setHeight(weight);
+      setWeight(weight);
       updateUserField(user, "weight", weight);
       setErrorMessage("");
     } else {
