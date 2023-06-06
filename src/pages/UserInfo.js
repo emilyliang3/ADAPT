@@ -51,20 +51,27 @@ export default function UserInfo() {
       console.log("Weight must be a positive value.");
     }
   }
-
-  function changeHeight(height) {
-    if (height > 0 && height <= 100) {
-      setHeight(height);
-      updateUserField(user, "height", height);
-    } else {
-      console.log("Height must be greater than 0.");
-    }
+// added 
+function changeHeight(height) {
+  if (/^\d+$/.test(height) && height > 0 && height <= 100) {
+    setHeight(height);
+    updateUserField(user, "height", height);
+    setErrorMessage("");
+  } else {
+    setErrorMessage("Please enter a valid height as a positive number not exceeding 100.");
   }
+}
+//added
 
-  function changeName(name) {
+function changeName(name) {
+  if (/^[a-zA-Z]+$/.test(name)) {
     setName(name);
     updateUserField(user, "name", name);
+    setErrorMessage("");
+  } else {
+    setErrorMessage("Please enter a valid name containing only letters.");
   }
+}
 
   
   function validateBirthday(input) {
