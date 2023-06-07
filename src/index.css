@@ -90,6 +90,19 @@ form button {
 
 /*css for navbar*/
 
+.navbar li#logo{
+  background-color:transparent;
+}
+
+#logopic{
+  height:69px;
+  width:auto;
+}
+
+.shift-left{
+  margin-right:128px;
+}
+
 .navbar {
   display: flex;
   justify-content: center;
@@ -236,6 +249,8 @@ form button {
   font-size: 1.35em;
   color: red;
 }
+
+
 
 
 
