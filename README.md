@@ -10,10 +10,10 @@
 #### `npm start` 
 
 # Description
-Introducing ADAPT, the ultimate personal health web app. Say goodbye to the intimidating process of going to the gym or switching diets, because ADAPT is here to make it easy and convenient for you.ADAPT is your personal trainer and dietician, all in one. It helps you achieve your physical fitness goals by creating personalized plans tailored to your needs. Whether it's recommending the right food intake or suggesting the perfect workout routine, ADAPT has got you covered. The best part? ADAPT is 100% personalized and customizable. You have the power to choose the features that matter to you. If you're focused on meal planning, simply select that option and let ADAPT take care of the rest.
+
+Introducing ADAPT, the ultimate personal health web app. Say goodbye to the intimidating process of going to the gym or switching diets, because ADAPT is here to make it easy and convenient for you. ADAPT is your personal trainer and dietician, all in one. It helps you achieve your physical fitness goals by creating personalized plans tailored to your needs. Whether it's recommending the right food intake or suggesting the perfect workout routine, ADAPT has got you covered. The best part? ADAPT is 100% personalized and customizable. You have the power to choose the features that matter to you. If you're focused on meal planning, simply select that option and let ADAPT take care of the rest.
+
 # Getting Started with Create React App
-
-
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
