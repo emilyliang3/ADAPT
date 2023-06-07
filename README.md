@@ -1,4 +1,5 @@
 # ADAPT
+![Screenshot 2023-06-07 134640](https://github.com/emilyliang3/ADAPT/assets/105026533/1c74cd8b-a01b-47f2-88da-08af190db1db)
 ## CS35L Project
 ### First, download the files from the repo.
 #### `git clone https://github.com/emilyliang3/ADAPT.git`
