@@ -222,7 +222,7 @@ function Food() {
     <>
       <h1>Hi! I'm AD, your personal Aiding Dietician!</h1>
       <h2>Select any nutritional content options below and I'll find the best recipes that match what you're looking for!</h2>
-      <p className = "blue">Note: Customization by BMI option should be selected with one or more of the nutritional content options</p>
+      <p className = "blue">Note: Customize by my BMI option should be selected with one or more of the nutritional content options</p>
       <div className = "color">
         <MyForm/>
         

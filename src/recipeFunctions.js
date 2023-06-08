@@ -3,9 +3,9 @@ import { db } from './firebaseFunctions.js';
 import { calculateUserBMI } from './userFunctions.js';
 
 // recipe constant values
-let PROTEIN_MIN = 5;
+let PROTEIN_MIN = 20;
 let FAT_MAX = 5;
-let CAL_MAX = 600;
+let CAL_MAX = 350;
 
 export async function getRecipeData(recipe_id) {
     try {
@@ -114,21 +114,19 @@ export async function searchRecipes(protein, fat, cal, df, gf, veg) {
 export async function customRecipesByBMI(user) {
     const bmi = await calculateUserBMI(user);
 
-
     if (bmi >= 25) {
         PROTEIN_MIN = 20;
         FAT_MAX = 11;
-        CAL_MAX = 301;
+        CAL_MAX = 175;
     }
     else if (bmi <= 18.5) {
         PROTEIN_MIN = 20;
         FAT_MAX = 11;
-        CAL_MAX = 1000;
+        CAL_MAX = 450;
     }
   }
 
 export async function resetCustomRecipesByBMI() {
-    
     PROTEIN_MIN = 0;
     FAT_MAX = 1000;
     CAL_MAX = 1000;

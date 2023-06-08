@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { getWorkoutData, searchWorkouts } from '../workoutFunctions';
 
-  function DisplayOneWrokout({WorkoutName}){
+  function DisplayOneWorkout({WorkoutName}){
     const [name, setName] = useState("N/A"); 
     const [goal, setgoal] = useState([]);
     const [muscles, setmuscles] = useState([]);
@@ -26,32 +26,33 @@ import { getWorkoutData, searchWorkouts } from '../workoutFunctions';
     return (
       <div className = "box">
         <h3 className = "title">{name}</h3>
-        <h3 className = "header">Muscles groups:</h3>
-        <ul className = "table">
+        <h3 className = "header">Targeted muscle groups:</h3>
+        <ul className = "musclelist">
         {muscles.map((item, index) => (
           <li key={index} className = "tag2">{item}</li>
-          
         ))}
         </ul>
         <br></br> 
-        <a href={Instructions}>Click here for instructions and full workout</a>
+        <a href={Instructions}>Click here for full instructions</a>
       </div>
     );
   }
 
 
 function DisplayWorkouts({workouts}) {
-  let WrokoutHeader = "";
+  let WorkoutHeader = "";
   const allWorkouts = workouts.map(name => (
-    <DisplayOneWrokout key={name} WorkoutName={name} />
+    <DisplayOneWorkout key={name} WorkoutName={name} />
   ));
   if (workouts.length >= 1) {
-    WrokoutHeader = "Here's the Workouts that I found!"
+    WorkoutHeader = "Here's the workouts that I found!"
   }
   return (
     <div>
-    <h2>{WrokoutHeader}</h2>
+    <h2>{WorkoutHeader}</h2>
+    <div className="workouts">
     {allWorkouts}
+    </div>
     </div>
   );
 }

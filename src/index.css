@@ -39,6 +39,10 @@ h2 {
   margin-top: 20px;
 }
 
+.sidespace {
+  margin-right: 10px;
+}
+
 .bigspace {
   margin-top: 40px;
 }
@@ -177,7 +181,6 @@ form button {
 }
 
 /*css for userinfo*/
-
 .header {
   color: #0B355F;
   font-size: 1.5em;
@@ -205,10 +208,11 @@ form button {
 .tag2 {
     display: inline-block;
     border: 2px solid black;
-    border-radius: 50%;
     padding: 5px;
     margin-right: 10px;
+    margin-bottom: 10px;
     font-size: 1.3em;
+    text-align: left;
     background-color: #C5DBF1;
 }
 
@@ -220,7 +224,33 @@ form button {
     width:600px;
     box-sizing: border-box;
     background-color: #ECF4FC;
+}
+
+.musclelist {
+  margin: 0;
+  padding: 0;
+}
+
+.workouts {
+  margin-left: 40px;
+  margin-right: 40px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-column-gap: 20px;
+  grid-row-gap: 20px;
+}
+
+@media (min-width: 768px) {
+  .workouts {
+    grid-template-columns: repeat(3, 1fr);
   }
+}
+
+@media (min-width: 1024px) {
+  .workouts {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
 
 .header {
     color: #0B355F;

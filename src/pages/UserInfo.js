@@ -60,7 +60,7 @@ function changeHeight(height) {
     updateUserField(user, "height", height);
     setErrorMessage("");
   } else {
-    setErrorMessage("Please enter a valid height");
+    setErrorMessage("Please enter a valid height.");
   }
 }
 //added
@@ -101,6 +101,7 @@ function changeName(name) {
           <h3 className="header">Birthday: <div className="black">{birthday}</div></h3>
         </div>
       </div>
+      <p className='blue'> This information will be used to calculate your BMI if you'd like personalized recipes.</p>
 
       <br></br>
       <h2>Update Your Information:</h2>
