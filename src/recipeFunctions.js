@@ -1,11 +1,5 @@
 import { doc, getDoc, getDocs, collection, where, query } from 'firebase/firestore';
 import { db } from './firebaseFunctions.js';
-import { calculateUserBMI } from './userFunctions.js';
-
-// recipe constant values
-let PROTEIN_MIN = 20;
-let FAT_MAX = 5;
-let CAL_MAX = 350;
 
 export async function getRecipeData(recipe_id) {
     try {
@@ -48,13 +42,23 @@ async function getQueryRecipesList(field, operator, value) {
     return recipeslist;
 }
 
-export async function searchRecipes(protein, fat, cal, df, gf, veg) {
+export async function searchRecipes(protein, fat, cal, df, gf, veg, bmi, height, weight) {
     let fatlist = [];
     let proteinlist = [];
     let callist = [];
     let dflist = [];
     let gflist = [];
     let veglist = [];
+    let PROTEIN_MIN = 20;
+    let FAT_MAX = 5;
+    let CAL_MAX = 350;
+
+    if (bmi) {
+        const thresholds = getCustomThresholds(height, weight);
+        PROTEIN_MIN = thresholds[0];
+        FAT_MAX = thresholds[1];
+        CAL_MAX = thresholds[2];
+    }
 
     if (protein) {
         try {
@@ -110,24 +114,36 @@ export async function searchRecipes(protein, fat, cal, df, gf, veg) {
     return commonRecipes;
 }
 
+function calculateBMI(heightInInches, weightInPounds) {
+    // Convert height to meters
+        const heightInMeters = heightInInches * 0.0254;
+    
+    // Convert weight to kilograms
+        const weightInKilograms = weightInPounds * 0.45359237;
+    
+    // Calculate BMI
+        const bmi = weightInKilograms / (heightInMeters * heightInMeters);
+    
+    // Return BMI rounded to two decimal places
+        return bmi.toFixed(2); 
+      }
 
-export async function customRecipesByBMI(user) {
-    const bmi = await calculateUserBMI(user);
+function getCustomThresholds(height, weight) {
+    let PROTEIN_MIN = 20;
+    let FAT_MAX = 5;
+    let CAL_MAX = 350;
+
+    const bmi = calculateBMI(height, weight)
 
     if (bmi >= 25) {
-        PROTEIN_MIN = 20;
-        FAT_MAX = 11;
-        CAL_MAX = 175;
-    }
-    else if (bmi <= 18.5) {
-        PROTEIN_MIN = 20;
-        FAT_MAX = 11;
+        PROTEIN_MIN = 30;
+        FAT_MAX = 6;
         CAL_MAX = 450;
     }
-  }
-
-export async function resetCustomRecipesByBMI() {
-    PROTEIN_MIN = 0;
-    FAT_MAX = 1000;
-    CAL_MAX = 1000;
+    else if (bmi <= 18.5) {
+        PROTEIN_MIN = 10;
+        FAT_MAX = 4;
+        CAL_MAX = 175;
+    }
+    return [PROTEIN_MIN, FAT_MAX, CAL_MAX]
 }
