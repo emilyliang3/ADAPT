@@ -1,7 +1,7 @@
-import {useState} from 'react';
-import { getRecipeData, searchRecipes, customRecipesByBMI, resetCustomRecipesByBMI } from '../recipeFunctions';
+import {useState, useEffect} from 'react';
+import { getRecipeData, searchRecipes, getCustomThresholds } from '../recipeFunctions';
 import { useUser } from '../firebaseFunctions';
-
+import { getUserField } from '../userFunctions';
 
 
 function DisplayOneRecipe({recipeName}){
@@ -103,6 +103,23 @@ function Food() {
   });
   const [recipes, setRecipes] = useState([]);
   const user = useUser();
+  const [weight, setWeight] = useState("");
+  const [height, setHeight] = useState("");
+
+  useEffect(() => {
+    if (user) {
+      getUserField(user, "weight").then((weight) => {
+        if (weight && weight > 0) {
+          setWeight(weight);
+        }
+      });
+      getUserField(user, "height").then((height) => {
+        if (height) {
+          setHeight(height);
+        }
+      });
+    }
+  }, [user]);
 
   function MyForm() {
     const handleCheckboxChange = (event) => {
@@ -116,15 +133,10 @@ function Food() {
     const handleSubmit = async (event) => {
       event.preventDefault();
 
-      resetCustomRecipesByBMI();
-      if(user && checkboxValues.custom){
-
-        await customRecipesByBMI(user);
-      }
       setRecipes([]);
       // Handle form submission or perform any desired actions with checkboxValues
       const options = Object.values(checkboxValues);
-      searchRecipes(...options).then((recipes) => {
+      searchRecipes(...options, height, weight).then((recipes) => {
         if (recipes) {
           setRecipes(recipes);
         }
