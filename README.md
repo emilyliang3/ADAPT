@@ -4,8 +4,6 @@
 ### First, download the files from the repo.
 #### `git clone https://github.com/emilyliang3/ADAPT.git`
 ## Run:
-#### `npm install firebase` 
-#### `npm install react-router-dom` 
 #### `npm install` 
 #### `npm start` 
 
